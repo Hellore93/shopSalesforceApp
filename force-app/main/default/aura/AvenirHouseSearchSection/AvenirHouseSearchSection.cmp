@@ -1,0 +1,58 @@
+<aura:component description="AvenirHouseSearchSection" controller="AvenirHouseSearchSection" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:attribute name="mycolumns" type="List" />
+    <aura:attribute name="mydata" type="Object" />
+    <aura:attribute name="houseName" type="String" />
+    <aura:attribute name="selectedRows" type="List" />
+    <aura:attribute name="variant1" type="boolean" default="false" />
+    <aura:attribute name="productId" type="String" />
+
+    <aura:attribute name="photoList" type="List" default="[]" />
+    <aura:attribute name="prefixURL" type="String" default="/sfc/servlet.shepherd/version/download/" />
+
+
+
+    <lightning:card title="Search Section">
+        <div class="searchSection">
+            <div class="searchNameSection" onkeyup="{! c.startSearch }">
+                <lightning:input aura:id="enter-house-name" name="enter-search" label="Write house name and press enter" type="search" />
+            </div>
+            <div class="buttonSection">
+                <!-- <lightning:recordForm objectApiName="Product2" fields="{!v.fields}" onsuccess="{!c.handleSuccess}" /> -->
+                <lightning:button class="newAccountButton" variant="brand" label="New" title="New" onclick="{!c.newHouse}" />
+                <lightning:button class="newAccountButton" variant="brand" label="Clear" title="Clear" onclick="{!c.clear}" />
+            </div>
+        </div>
+
+        <lightning:card title="Data Table">
+            <div class="productTable">
+                <lightning:datatable class="productRow" data="{! v.mydata }" columns="{! v.mycolumns }" keyField="Id" hideCheckboxColumn="true" onrowaction="{!c.handleRowAction}" />
+            </div>
+        </lightning:card>
+
+        <aura:if isTrue="{!v.variant1}">
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="modal-content-id-1">
+                        <h3 class="headlineProduct">Product Information</h3>
+                        <force:recordView recordId="{!v.productId}" />
+                        <h3 class="headlineProduct">Gallery</h3>
+                        <div class="iterator">
+                            <aura:iteration items="{!v.photoList}" var="content">
+                                <div class="photoItem">
+                                    <img src="{!v.prefixURL + content.Id}" width="200" height="200" />
+                                    <p>{!content.Title}</p>
+                                </div>
+                            </aura:iteration>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning:button class="slds-button slds-button_neutral" onclick="{!c.closeModal}">Close</lightning:button>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </aura:if>
+
+    </lightning:card>
+</aura:component>

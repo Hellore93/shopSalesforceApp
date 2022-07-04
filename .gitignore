@@ -7,7 +7,6 @@
 .sfdx/
 .localdevserver/
 .vscode/
-force-app/
 manifest/
 script/
 deploy-options.json

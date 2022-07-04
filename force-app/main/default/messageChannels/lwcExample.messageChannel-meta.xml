@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>lwcExample</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message channel to refresh apex</description>
+
+    <lightningMessageFields>
+        <description>message to send</description>
+        <fieldName>messageToSend</fieldName>
+    </lightningMessageFields>
+
+    <lightningMessageFields>
+        <fieldName>sourceSystem</fieldName>
+        <description>My source ?</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

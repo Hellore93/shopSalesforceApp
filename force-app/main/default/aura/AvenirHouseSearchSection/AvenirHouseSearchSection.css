@@ -1,0 +1,40 @@
+.THIS {}
+
+.THIS .searchSection {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.THIS .buttonSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.THIS .photoItem {
+    margin: 0 10px;
+}
+
+.THIS .iterator {
+    display: flex;
+    text-align: center;
+}
+
+.THIS .headlineProduct {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.THIS .productRow {
+    text-align: center;
+}
+
+.THIS .productTable {
+    width: 95%;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 10px;
+}
