@@ -56,6 +56,13 @@
             if (state === "SUCCESS") {
                 console.log(response.getReturnValue());
                 cmp.set('v.photoList', response.getReturnValue());
+                if (response.getReturnValue().length > 0) {
+                    cmp.set("v.galleryPhoto", true)
+                    cmp.set("v.galleryText", false)
+                } else {
+                    cmp.set("v.galleryPhoto", false)
+                    cmp.set("v.galleryText", true)
+                }
             } else if (state === "ERROR") {
                 var errors = response.getError();
                 console.error(errors);

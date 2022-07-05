@@ -24,11 +24,18 @@ public with sharing class AvenirHouseSearchSection {
 
     @AuraEnabled
     public static List<ContentVersion> getProductPhoto(String productId){
-        system.debug(productId);
         List<ContentVersion> productPhoto = 
-        [SELECT FirstPublishLocationId, FileType, ContentBodyId, Title FROM ContentVersion WHERE FirstPublishLocationId = :productId LIMIT 100];
-        system.debug(productPhoto);
+        [SELECT FirstPublishLocationId, FileType, ContentBodyId, Title, 	
+        ContentDocumentId FROM ContentVersion WHERE FirstPublishLocationId = :productId LIMIT 100];
         return productPhoto;
+    }
+
+    @AuraEnabled
+    public static ContentDocument deletePhotoById(String photoId){
+        System.debug(photoId);
+        ContentDocument contentToDelete = [SELECT Id, Title FROM ContentDocument WHERE Id = :photoId];
+        delete contentToDelete;
+        return contentToDelete;
     }
 
 }

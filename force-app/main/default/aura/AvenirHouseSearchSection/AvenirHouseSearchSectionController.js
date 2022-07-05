@@ -92,20 +92,14 @@
         cmp.set('v.variant1', false);
     },
 
-    // handleUploadFinished: function(cmp, event) {
-    //     // Get the list of uploaded files
-    //     var uploadedFiles = event.getParam("files");
-    //     alert("Files uploaded : " + uploadedFiles.length);
-
-    //     // Get the file name
-    //     uploadedFiles.forEach(file => console.log(file.name));
-    // },
-
-    // handleSuccess: function(component, event, helper) {
-    //     component.find('notifLib').showToast({
-    //         "variant": "success",
-    //         "title": "Account Created",
-    //         "message": "Record ID: " + event.getParam("id")
-    //     });
-    // }
+    handleLikeButtonClick: function(cmp, event) {
+        var photoId = event.target.dataset.value;
+        var photoIndex = event.target.dataset.index;
+        var listAfterDelete = cmp.get('v.photoList');
+        listAfterDelete.splice(photoIndex, 1);
+        cmp.set('v.photoList', listAfterDelete);
+        var action = cmp.get('c.deletePhotoById');
+        action.setParams({ photoId: photoId });
+        $A.enqueueAction(action);
+    }
 })

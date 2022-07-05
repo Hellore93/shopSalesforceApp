@@ -32,9 +32,32 @@
 }
 
 .THIS .productTable {
-    width: 95%;
+    width: 95vw;
     justify-content: center;
     display: flex;
     margin: 0 auto;
     border-radius: 10px;
+}
+
+.THIS .photoTitle {
+    word-break: break-all;
+}
+
+.THIS .photoItem {
+    /* display: flex;
+    flex-direction: column; */
+    width: 200px;
+}
+
+.THIS .deleteIcon {
+    margin-top: 10px;
+}
+
+.THIS .galleryMessage {
+    text-align: center;
+}
+
+.THIS .iterator {
+    display: -webkit-box;
+    overflow: auto;
 }

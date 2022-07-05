@@ -1,4 +1,5 @@
 <aura:component description="AvenirHouseSearchSection" controller="AvenirHouseSearchSection" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <aura:handler name="init" value="{! this }" action="{! c.init }" />
     <aura:attribute name="mycolumns" type="List" />
     <aura:attribute name="mydata" type="Object" />
@@ -6,11 +7,10 @@
     <aura:attribute name="selectedRows" type="List" />
     <aura:attribute name="variant1" type="boolean" default="false" />
     <aura:attribute name="productId" type="String" />
-
     <aura:attribute name="photoList" type="List" default="[]" />
     <aura:attribute name="prefixURL" type="String" default="/sfc/servlet.shepherd/version/download/" />
-
-
+    <aura:attribute name="galleryText" type="boolean" default="true" />
+    <aura:attribute name="galleryPhoto" type="boolean" default="false" />
 
     <lightning:card title="Search Section">
         <div class="searchSection">
@@ -37,14 +37,21 @@
                         <h3 class="headlineProduct">Product Information</h3>
                         <force:recordView recordId="{!v.productId}" />
                         <h3 class="headlineProduct">Gallery</h3>
-                        <div class="iterator">
-                            <aura:iteration items="{!v.photoList}" var="content">
-                                <div class="photoItem">
-                                    <img src="{!v.prefixURL + content.Id}" width="200" height="200" />
-                                    <p>{!content.Title}</p>
-                                </div>
-                            </aura:iteration>
-                        </div>
+                        <aura:if isTrue="{!v.galleryText}">
+                            <p class="galleryMessage">No foto added!</p>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.galleryPhoto}">
+                            <div class="iterator">
+                                <aura:iteration indexVar="i" items="{!v.photoList}" var="content">
+                                    <div class="photoItem">
+                                        <img src="{!v.prefixURL + content.Id}" width="200" height="200" />
+                                        <p class="photoTitle">{!content.Title}</p>
+                                        <button data-value="{!content.ContentDocumentId}" data-index="{!i}" class="deleteIcon" iconName="action:delete" onclick="{! c.handleLikeButtonClick }" alternativeText="Delete"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </aura:iteration>
+                            </div>
+                        </aura:if>
                     </div>
                     <div class="slds-modal__footer">
                         <lightning:button class="slds-button slds-button_neutral" onclick="{!c.closeModal}">Close</lightning:button>
