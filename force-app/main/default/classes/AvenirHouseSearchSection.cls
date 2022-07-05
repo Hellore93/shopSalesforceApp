@@ -35,7 +35,16 @@ public with sharing class AvenirHouseSearchSection {
         System.debug(photoId);
         ContentDocument contentToDelete = [SELECT Id, Title FROM ContentDocument WHERE Id = :photoId];
         delete contentToDelete;
+        System.debug(contentToDelete);
         return contentToDelete;
     }
 
+    @AuraEnabled
+    public static void setDefaultPhotoUrl(String productId, String link){
+        Product2 objectToSetDefaultPhoto = [SELECT  Id, DisplayUrl, Name FROM Product2 WHERE Id= :productId LIMIT 200];
+
+        objectToSetDefaultPhoto.DisplayUrl = link;
+        System.debug('zapisałem');
+        update objectToSetDefaultPhoto;
+    }
 }

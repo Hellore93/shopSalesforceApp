@@ -93,13 +93,34 @@
     },
 
     handleLikeButtonClick: function(cmp, event) {
-        var photoId = event.target.dataset.value;
-        var photoIndex = event.target.dataset.index;
+        var photoId = event.currentTarget.dataset.value;
+        console.log(photoId);
+        var photoIndex = event.currentTarget.dataset.index;
         var listAfterDelete = cmp.get('v.photoList');
         listAfterDelete.splice(photoIndex, 1);
         cmp.set('v.photoList', listAfterDelete);
         var action = cmp.get('c.deletePhotoById');
         action.setParams({ photoId: photoId });
         $A.enqueueAction(action);
+    },
+
+    setToDisplayUrl: function(cmp, event) {
+        var contentDocumentId = event.currentTarget.dataset.param;
+        var contentProductId = event.currentTarget.dataset.productid;
+        console.log('documId: ' + contentDocumentId);
+        console.log(contentProductId);
+        const link = 'https://britenet93-dev-ed.my.salesforce.com/sfc/servlet.shepherd/document/download/' + contentDocumentId;
+        var action = cmp.get('c.setDefaultPhotoUrl');
+        action.setParams({ productId: contentProductId, link: link });
+        action.setCallback(cmp,
+            function(response) {
+                var state = response.getState();
+                if (state === 'SUCCESS') {
+                    $A.get('e.force:refreshView').fire();
+                } else {}
+            }
+        );
+        $A.enqueueAction(action);
+
     }
 })

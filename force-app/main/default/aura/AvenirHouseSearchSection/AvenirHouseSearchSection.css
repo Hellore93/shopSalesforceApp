@@ -61,3 +61,17 @@
     display: -webkit-box;
     overflow: auto;
 }
+
+.THIS .btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 0 5px;
+}
+
+.THIS .btn:hover {
+    background-color: RoyalBlue;
+}
