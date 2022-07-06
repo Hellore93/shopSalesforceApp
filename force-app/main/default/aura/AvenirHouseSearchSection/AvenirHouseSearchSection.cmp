@@ -11,6 +11,10 @@
     <aura:attribute name="prefixURL" type="String" default="/sfc/servlet.shepherd/version/download/" />
     <aura:attribute name="galleryText" type="boolean" default="true" />
     <aura:attribute name="galleryPhoto" type="boolean" default="false" />
+    <aura:attribute name="productPrice" type="boolean" default="false" />
+    <aura:attribute name="informationModal" type="boolean" default="false" />
+    <aura:attribute name="priceObject" type="List" default="['priceId', 'isActive', 'UnitPrice']" />
+    <aura:attribute name="priceObjectName" type="String" />
 
     <lightning:card title="Search Section">
         <div class="searchSection">
@@ -18,7 +22,6 @@
                 <lightning:input aura:id="enter-house-name" name="enter-search" label="Write house name and press enter" type="search" />
             </div>
             <div class="buttonSection">
-                <!-- <lightning:recordForm objectApiName="Product2" fields="{!v.fields}" onsuccess="{!c.handleSuccess}" /> -->
                 <lightning:button class="newAccountButton" variant="brand" label="New" title="New" onclick="{!c.newHouse}" />
                 <lightning:button class="newAccountButton" variant="brand" label="Clear" title="Clear" onclick="{!c.clear}" />
             </div>
@@ -34,27 +37,38 @@
             <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
                 <div class="slds-modal__container">
                     <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="modal-content-id-1">
-                        <h3 class="headlineProduct">Product Information</h3>
-                        <force:recordView recordId="{!v.productId}" />
-                        <h3 class="headlineProduct">Gallery</h3>
-                        <aura:if isTrue="{!v.galleryText}">
-                            <p class="galleryMessage">No foto added!</p>
+                        <aura:if isTrue="{!v.informationModal}">
+                            <h3 class="headlineProduct">Product Information</h3>
+                            <force:recordView recordId="{!v.productId}" />
+                            <h3 class="headlineProduct">Gallery</h3>
+                            <aura:if isTrue="{!v.galleryText}">
+                                <p class="galleryMessage">No foto added!</p>
+                            </aura:if>
+
+                            <aura:if isTrue="{!v.galleryPhoto}">
+                                <div class="iterator">
+                                    <aura:iteration indexVar="i" items="{!v.photoList}" var="content">
+                                        <div class="photoItem">
+                                            <img src="{!v.prefixURL + content.Id}" width="200" height="200" />
+                                            <p class="photoTitle">{!content.Title}</p>
+                                            <button data-param="{!content.ContentDocumentId}" data-productid="{!content.FirstPublishLocationId}" class="btn" onclick="{!c.setToDisplayUrl}"><i class="fa fa-home"></i></button>
+                                            <button data-value="{!content.ContentDocumentId}" data-index="{!i}" class="btn" iconName="action:delete" onclick="{! c.handleLikeButtonClick }" alternativeText="Delete"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    </aura:iteration>
+                                </div>
+                            </aura:if>
                         </aura:if>
 
-                        <aura:if isTrue="{!v.galleryPhoto}">
-                            <div class="iterator">
-                                <aura:iteration indexVar="i" items="{!v.photoList}" var="content">
-                                    <div class="photoItem">
-                                        <img src="{!v.prefixURL + content.Id}" width="200" height="200" />
-                                        <p class="photoTitle">{!content.Title}</p>
-                                        <button data-param="{!content.ContentDocumentId}" data-productid="{!content.FirstPublishLocationId}" class="btn" onclick="{!c.setToDisplayUrl}"><i class="fa fa-home"></i></button>
-                                        <button data-value="{!content.ContentDocumentId}" data-index="{!i}" class="btn" iconName="action:delete" onclick="{! c.handleLikeButtonClick }" alternativeText="Delete"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                </aura:iteration>
-                            </div>
+                        <aura:if isTrue="{!v.productPrice}">
+                            <h3 class="headlineProduct">Add Product Price</h3>
+                            <p>Product Name: <b>{!v.priceObjectName}</b></p>
+                            <lightning:input aura:id="enter-product-price" type="number" name="input7" label="Price of product: " value="{!v.priceObject.UnitPrice}" formatter="currency" step="0.01" />
                         </aura:if>
                     </div>
                     <div class="slds-modal__footer">
+                        <aura:if isTrue="{!v.productPrice}">
+                            <lightning:button variant="brand" label="Save" title="Brand action" onclick="{! c.savePriceBook }" />
+                        </aura:if>
                         <lightning:button class="slds-button slds-button_neutral" onclick="{!c.closeModal}">Close</lightning:button>
                     </div>
                 </div>

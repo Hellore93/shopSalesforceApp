@@ -3,7 +3,6 @@
         action.setCallback(this, $A.getCallback(function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                // console.log(response.getState());
                 cmp.set('v.mydata', response.getReturnValue());
             } else if (state === "ERROR") {
                 var errors = response.getError();
@@ -41,20 +40,19 @@
             "recordId": rows[rowIndex].Id
         });
         editRecordEvent.fire();
-
     },
 
     viewRow: function(cmp, row) {
         var rows = cmp.get('v.mydata');
         var rowIndex = rows.indexOf(row);
         cmp.set('v.variant1', true);
+        cmp.set('v.informationModal', true);
         cmp.set('v.productId', rows[rowIndex].Id);
 
         var action = cmp.get("c.getProductPhoto")
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                console.log(response.getReturnValue());
                 cmp.set('v.photoList', response.getReturnValue());
                 if (response.getReturnValue().length > 0) {
                     cmp.set("v.galleryPhoto", true)
@@ -83,5 +81,4 @@
         });
         urlEvent.fire();
     }
-
 })

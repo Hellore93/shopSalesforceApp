@@ -4,14 +4,14 @@
             { label: 'Show details', name: 'show_details' },
             { label: 'Edit', name: 'edit' },
             { label: 'Delete', name: 'delete' },
-            { label: 'Add Photo', name: 'addPhoto' }
+            { label: 'Add Photo', name: 'addPhoto' },
+            { label: 'Add Price', name: 'addPrice' }
         ]
 
         cmp.set('v.mycolumns', [
             { label: 'Name', fieldName: 'Name', type: 'text' },
             { label: 'Type', fieldName: 'Family', type: 'text' },
             { label: 'Description', fieldName: 'Description', type: 'text' },
-            { label: 'Price', fieldName: 'Price__c', type: 'currency' },
             { label: 'House code', fieldName: 'ProductCode', type: 'text' },
             { type: 'action', typeAttributes: { rowActions: actions } }
         ]);
@@ -65,6 +65,26 @@
             case 'addPhoto':
                 cmp.set('v.selectedRows', []);
                 helper.relatedList(cmp, row);
+                break;
+            case 'addPrice':
+                list.push(row);
+                cmp.set('v.variant1', true);
+                cmp.set('v.productPrice', true);
+                cmp.set('v.selectedRows', list);
+                var rows = cmp.get('v.mydata');
+                var rowIndex = rows.indexOf(row);
+                cmp.set('v.priceObjectName', rows[rowIndex].Name);
+                var action = cmp.get('c.getPriceById');
+                action.setParams({ Product2IdFront: rows[rowIndex].Id });
+                action.setCallback(this, $A.getCallback(function(response) {
+                    var state = response.getState();
+                    if (state === "SUCCESS") {
+                        cmp.set('v.priceObject.UnitPrice', response.getReturnValue().UnitPrice);
+                        cmp.set('v.priceObject.priceId', response.getReturnValue().Id);
+                    } else {}
+                }));
+                $A.enqueueAction(action);
+                break;
         }
     },
 
@@ -90,11 +110,14 @@
 
     closeModal: function(cmp) {
         cmp.set('v.variant1', false);
+        cmp.set('v.productPrice', false);
+        cmp.set('v.informationModal', false);
+        cmp.set('v.priceObject.UnitPrice', '');
+        cmp.get('v.selectedRows', []);
     },
 
     handleLikeButtonClick: function(cmp, event) {
         var photoId = event.currentTarget.dataset.value;
-        console.log(photoId);
         var photoIndex = event.currentTarget.dataset.index;
         var listAfterDelete = cmp.get('v.photoList');
         listAfterDelete.splice(photoIndex, 1);
@@ -107,8 +130,6 @@
     setToDisplayUrl: function(cmp, event) {
         var contentDocumentId = event.currentTarget.dataset.param;
         var contentProductId = event.currentTarget.dataset.productid;
-        console.log('documId: ' + contentDocumentId);
-        console.log(contentProductId);
         const link = 'https://britenet93-dev-ed.my.salesforce.com/sfc/servlet.shepherd/document/download/' + contentDocumentId;
         var action = cmp.get('c.setDefaultPhotoUrl');
         action.setParams({ productId: contentProductId, link: link });
@@ -121,6 +142,32 @@
             }
         );
         $A.enqueueAction(action);
+    },
 
+    savePriceBook: function(cmp, evt, row) {
+        var rows = cmp.get('v.selectedRows');
+        var action = cmp.get('c.savePriceBookEntry');
+        action.setParams({
+            productId: rows[0].Id,
+            price: cmp.get('v.priceObject[UnitPrice]'),
+            priceId: cmp.get('v.priceObject[priceId]')
+        });
+        action.setCallback(cmp,
+            function(response) {
+                var state = response.getState();
+                if (state === 'SUCCESS') {
+
+                    var toastEvent = $A.get("e.force:showToast");
+                    toastEvent.setParams({
+                        "title": "Success!",
+                        "type": 'success',
+                        "message": "The record has been inserted successfully."
+                    });
+                    toastEvent.fire();
+
+                } else {}
+            }
+        );
+        $A.enqueueAction(action);
     }
 })
