@@ -94,10 +94,8 @@
             "entityApiName": "Product2"
         });
         createRecordEvent.setParam("navigationLocation", "LOOKUP");
-        createRecordEvent.setParam("panelOnDestroyCallback", function callbackWrapper() {
-            location.reload();
-        });
         createRecordEvent.fire();
+        $A.enqueueAction(cmp.get('c.init'));
     },
 
     clear: function(cmp, evt, helper) {
@@ -144,7 +142,7 @@
         $A.enqueueAction(action);
     },
 
-    savePriceBook: function(cmp, evt, row) {
+    savePriceBook: function(cmp, evt, row, helper) {
         var rows = cmp.get('v.selectedRows');
         var action = cmp.get('c.savePriceBookEntry');
         action.setParams({
@@ -152,22 +150,23 @@
             price: cmp.get('v.priceObject[UnitPrice]'),
             priceId: cmp.get('v.priceObject[priceId]')
         });
-        action.setCallback(cmp,
-            function(response) {
-                var state = response.getState();
-                if (state === 'SUCCESS') {
-
-                    var toastEvent = $A.get("e.force:showToast");
-                    toastEvent.setParams({
-                        "title": "Success!",
-                        "type": 'success',
-                        "message": "The record has been inserted successfully."
-                    });
-                    toastEvent.fire();
-
-                } else {}
-            }
-        );
+        action.setCallback(this, $A.getCallback(function(response) {
+            var state = response.getState();
+            if (state === 'SUCCESS') {
+                $A.enqueueAction(cmp.get('c.closeModal'));
+                var toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    "title": "Success!",
+                    "type": 'success',
+                    "message": "The record has been inserted successfully."
+                });
+                toastEvent.fire();
+            } else {}
+        }));
         $A.enqueueAction(action);
+    },
+
+    refreshAll: function(cmp, evt, helper) {
+        $A.enqueueAction(cmp.get('c.init'));
     }
 })

@@ -24,8 +24,9 @@
                 var rowIndex = rows.indexOf(row);
                 rows.splice(rowIndex, 1);
                 cmp.set('v.mydata', rows);
+                this.showSuccessToast('success', 'record delete successfully');
             } else if (state === "ERROR") {
-                // handle error
+                this.showSuccessToast('error', 'please try again');
             }
         });
         $A.enqueueAction(action);
@@ -80,5 +81,15 @@
             "url": urlString
         });
         urlEvent.fire();
+    },
+
+    showSuccessToast: function(type, message) {
+        var toastEvent = $A.get("e.force:showToast");
+        toastEvent.setParams({
+            "title": "Success!",
+            "type": type,
+            "message": message
+        });
+        toastEvent.fire();
     }
 })

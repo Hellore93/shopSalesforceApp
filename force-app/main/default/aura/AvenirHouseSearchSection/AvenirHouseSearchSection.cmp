@@ -16,6 +16,8 @@
     <aura:attribute name="priceObject" type="List" default="['priceId', 'isActive', 'UnitPrice']" />
     <aura:attribute name="priceObjectName" type="String" />
 
+    <aura:handler event="force:showToast" action="{!c.refreshAll}" />
+
     <lightning:card title="Search Section">
         <div class="searchSection">
             <div class="searchNameSection" onkeyup="{! c.startSearch }">
