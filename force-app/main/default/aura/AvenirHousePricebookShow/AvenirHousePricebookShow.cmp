@@ -1,0 +1,54 @@
+<aura:component description="AvenirHousePricebookShow" controller="AvenirHousePricebookShow">
+    <aura:attribute name="parent" type="Aura.Component" />
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:attribute name="mycolumns" type="List" />
+    <aura:attribute name="mydata" type="Object" />
+    <aura:attribute name="table" type="boolean" default="true" />
+    <aura:attribute name="editPricebook" type="boolean" default="false" />
+    <aura:attribute name="editDiscount" type="boolean" default="false" />
+    <aura:attribute name="pricebookId" type="String" />
+
+    <aura:attribute name="errors" type="Object" default="[]" />
+    <aura:attribute name="draftValues" type="Object" default="[]" />
+    <aura:attribute name="editDiscountColumns" type="List" />
+
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Pricebook table</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                <aura:if isTrue="{!v.table}">
+                    <!-- <div style="height: 500px"> -->
+                    <lightning:datatable class="pricebookTable" data="{! v.mydata }" columns="{! v.mycolumns }" keyField="Id" hideCheckboxColumn="true" onrowaction="{! c.handleRowAction }" />
+                    <!-- </div> -->
+                </aura:if>
+
+                <aura:if isTrue="{!v.editPricebook}">
+                    <!-- <div style="height: 300px"> -->
+                    <lightning:recordEditForm aura:id="recordEditForm" recordId="{!v.pricebookId}" objectApiName="Pricebook2" onsuccess="{!c.handleSuccess}">
+                        <lightning:messages />
+                        <lightning:inputField fieldName="Name" />
+                        <lightning:inputField fieldName="Description" />
+                        <lightning:inputField fieldName="IsActive" />
+                        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                    </lightning:recordEditForm>
+                    <!-- </div> -->
+                </aura:if>
+
+                <aura:if isTrue="{!v.editDiscount}">
+                    <!-- <div style="height: 300px"> -->
+                    <lightning:datatable columns="{! v.editDiscountColumns }" data="{! v.mydata }" keyField="Name" errors="{! v.errors }" draftValues="{! v.draftValues }" onsave="{! c.handleSaveEdition }" />
+                    <!-- </div> -->
+                </aura:if>
+            </div>
+            <div class="slds-modal__footer">
+                <lightning:button class="slds-m-top_small" variant="Neutral" name="return" label="Return" onclick="{!c.returnToTable}" />
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick="{!c.closeModal}">Close</button>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+</aura:component>
