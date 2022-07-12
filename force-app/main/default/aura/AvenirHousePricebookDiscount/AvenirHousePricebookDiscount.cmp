@@ -22,6 +22,15 @@
                     <lightning:input class="pricebookName" name="discountInputName" aura:id="discountInputName" type="text" label="Price Book Name" required="true" value="{!v.newPricebook.Name}" />
                     <lightning:input class="pricebookDescription" name="discountInputDescription" aura:id="pricebookDescription" type="text" label="Description" value="{!v.newPricebook.Description}" />
                     <ui:inputCheckbox aura:id="pricebookActive" label="Active" />
+                    <div class="discountDataSection">
+                        <div class="dateInput">
+                            <ui:inputDate required="true" aura:id="startDate" label="Discount start Date" value="{!v.newPricebook.StartDate}" displayDatePicker="true" />
+                        </div>
+                        <div class="dateInput">
+                            <ui:inputDate required="true" aura:id="endDate" label="Discount end Date" value="{!v.newPricebook.EndDate}" displayDatePicker="true" />
+                        </div>
+
+                    </div>
                 </div>
 
                 <h3 class="discountSettingsHeader">Discount settings</h3>

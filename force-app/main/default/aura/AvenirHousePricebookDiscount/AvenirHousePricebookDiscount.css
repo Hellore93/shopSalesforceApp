@@ -25,3 +25,13 @@
 .THIS .discountButton {
     margin: auto;
 }
+
+.THIS .discountDataSection {
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+}
+
+.THIS .dateInput {
+    margin: 0 10px;
+}

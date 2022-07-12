@@ -36,14 +36,27 @@
     editDiscount: function(cmp, row) {
         cmp.set('v.editDiscountColumns', [
             { label: 'Name', fieldName: 'Name', type: 'text', editable: false },
-            { label: 'Name', fieldName: 'Name', type: 'text', editable: false },
             { label: 'Price', fieldName: 'UnitPrice', type: 'currency', editable: true }
         ]);
-
-        var rows = cmp.get('v.mydata');
-        var rowIndex = rows.indexOf(row);
         var action = cmp.get('c.getPricebookDiscountById');
-        action.setParams({ pricebookId: rows[rowIndex].Id })
+        action.setParams({ pricebookId: cmp.get('v.pricebookId') })
+        action.setCallback(this, $A.getCallback(function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                cmp.set('v.mydata', response.getReturnValue());
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                console.error(errors);
+            }
+        }));
+        $A.enqueueAction(action);
+    },
+
+    addProduct: function(cmp, evt, helper) {
+        var action = cmp.get('c.addNewProductToPricebook');
+        action.setParams({
+            pricebookId: cmp.get('v.pricebookId')
+        });
         action.setCallback(this, $A.getCallback(function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
@@ -64,6 +77,19 @@
             "message": message
         });
         toastEvent.fire();
+    },
+
+    selectedProductOperation: function(cmp, evt, helper, action) {
+        action.setCallback(this, $A.getCallback(function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                this.showSuccessToast(cmp, 'success', 'Process successfully');
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                this.showSuccessToast(cmp, 'error', 'Process field');
+            }
+        }));
+        $A.enqueueAction(action);
     }
 
 })

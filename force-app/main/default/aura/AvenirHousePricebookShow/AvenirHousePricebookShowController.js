@@ -10,7 +10,9 @@
         cmp.set('v.mycolumns', [
             { label: 'Name', fieldName: 'Name', type: 'text' },
             { label: 'Description', fieldName: 'Description', type: 'text' },
-            { label: 'Active', fieldName: 'IsActive', type: 'curretextncy' },
+            { label: 'Active', fieldName: 'IsActive', type: 'boolean' },
+            { label: 'Discount Start', fieldName: 'Discount_Start__c', type: 'date' },
+            { label: 'Discount Finish', fieldName: 'Discount_Finish__c', type: 'date' },
             { type: 'action', typeAttributes: { rowActions: actions } }
         ]);
         var action = cmp.get('c.getAllPricebook');
@@ -27,6 +29,7 @@
                 cmp.set('v.table', false);
                 break;
             case 'edit_discount':
+                cmp.set('v.pricebookId', row.Id);
                 cmp.set('v.editDiscount', true);
                 cmp.set('v.table', false);
                 cmp.set('v.selectedRows', []);
@@ -53,13 +56,15 @@
         cmp.set('v.editPricebook', false);
         cmp.set('v.editDiscount', false);
         cmp.set('v.table', true);
+        cmp.set('v.addProductToPricebook', false);
+        cmp.set('v.pricebookView', true);
         $A.enqueueAction(cmp.get('c.init'));
     },
 
     handleSuccess: function(cmp, evt, helper) {
         $A.enqueueAction(cmp.get('c.returnToTable'));
         $A.enqueueAction(cmp.get('c.init'));
-        helper.showSuccessToast(cmp, evt, helper, 'success', 'record updated successfully');
+        helper.showSuccessToast(cmp, 'success', 'record updated successfully');
     },
 
     handleSaveEdition: function(cmp, evt, helper) {
@@ -90,5 +95,40 @@
             }
         });
         $A.enqueueAction(action);
+    },
+
+    addProduct: function(cmp, evt, helper) {
+        cmp.set('v.addProductToPricebook', true);
+        cmp.set('v.pricebookView', false);
+        helper.addProduct(cmp, evt, helper);
+    },
+
+    updateSelectedText: function(cmp, event) {
+        var selectedRows = event.getParam('selectedRows');
+        cmp.set('v.selectedObjectToDiscount', selectedRows);
+    },
+
+    saveSelectedProduct: function(cmp, evt, helper, action) {
+        console.log(cmp.get('v.pricebookId'));
+        var action = cmp.get('c.saveNewProductInPricebook');
+        action.setParams({
+            newProductToPricebook: cmp.get('v.selectedObjectToDiscount'),
+            pricebookId: cmp.get('v.pricebookId')
+        });
+        helper.selectedProductOperation(cmp, evt, helper, action);
+        cmp.set('v.addProductToPricebook', false);
+        cmp.set('v.pricebookView', true);
+        const row = cmp.get('v.pricebookId');
+        helper.editDiscount(cmp, row);
+    },
+
+    deleteSelectedProduct: function(cmp, evt, helper, action) {
+        var action = cmp.get('c.deletePricebookProduct');
+        action.setParams({
+            pricebookItem: cmp.get('v.selectedObjectToDiscount')
+        });
+        helper.selectedProductOperation(cmp, evt, helper, action);
+        const row = cmp.get('v.pricebookId');
+        helper.editDiscount(cmp, row);
     }
 })

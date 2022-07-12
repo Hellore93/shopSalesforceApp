@@ -1,2 +1,5 @@
-.THIS {
+.THIS {}
+
+.THIS .addProductButton {
+    margin-bottom: 15px;
 }

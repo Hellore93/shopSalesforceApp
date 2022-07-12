@@ -1,10 +1,20 @@
 ({
     init: function(cmp, action, helper) {
 
-        cmp.set('v.mycolumns', [
-            { label: 'Name', fieldName: 'Name', type: 'text' },
+        cmp.set('v.mycolumns', [{
+                label: 'Name',
+                fieldName: 'website',
+                type: 'url',
+                typeAttributes: {
+                    label: { fieldName: 'Name' },
+                    target: '_blank'
+                }
+            },
             { label: 'Price', fieldName: 'UnitPrice', type: 'currency' },
-            { label: 'Price with discount', fieldName: 'Description', type: 'currency' }
+            { label: 'Price with discount', fieldName: 'PriceAfterDiscount', type: 'currency' },
+            { label: 'Pricebook Name', fieldName: 'PricebookName', type: 'text' },
+            { label: 'Pricebook Description', fieldName: 'PricebookDescription', type: 'text' },
+
         ]);
         var action = cmp.get('c.getProductAndPrice');
         helper.getData(cmp, action);
@@ -17,15 +27,17 @@
 
             if (houseName != "") {
                 var action = cmp.get('c.getProductByName');
-                action.setParams({ houseName: cmp.find('enter-house-name').get('v.value') });
+                action.setParams({ houseName: houseName });
             } else {
-                var action = cmp.get('c.getProductAndPrice');
+                $A.enqueueAction(cmp.get('c.init'));
             }
 
             action.setCallback(this, $A.getCallback(function(response) {
                 var state = response.getState();
                 if (state === "SUCCESS") {
-                    cmp.set('v.mydata', response.getReturnValue());
+                    var nameOfProduct = response.getReturnValue();
+                    nameOfProduct.forEach(item => item['website'] = 'https://britenet93-dev-ed.lightning.force.com/lightning/r/Product2/' + item['Id'] + '/view');
+                    cmp.set('v.mydata', nameOfProduct);
                 } else if (state === "ERROR") {
                     var errors = response.getError();
                     console.error(errors);
@@ -54,11 +66,11 @@
             cmp.set('v.newPricebook', closeModal);
             cmp.set('v.showPricebook', closeShowModal);
         }
+        $A.enqueueAction(cmp.get('c.init'));
     },
 
     updateSelectedText: function(cmp, event) {
         var selectedRows = event.getParam('selectedRows');
         cmp.set('v.selectedObjectToDiscount', selectedRows);
     }
-
 })

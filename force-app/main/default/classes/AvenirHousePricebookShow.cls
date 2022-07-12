@@ -1,18 +1,9 @@
 public with sharing class AvenirHousePricebookShow {
     public AvenirHousePricebookShow() {}
 
-    // public class PricebookWrapper{
-    //     @AuraEnabled
-    //     public String pricebookId;
-    //     @AuraEnabled
-    //     public String pricebookName;
-    //     @AuraEnabled
-    //     public String pricebookDescription;
-    // }
-
     @AuraEnabled
     public static List<Pricebook2> getAllPricebook(){
-        List<Pricebook2> allPricebook = [SELECT Id, Name, Description, IsActive FROM Pricebook2 LIMIT 200];
+        List<Pricebook2> allPricebook = [SELECT Id, Name, Description, IsActive, Discount_Start__c, Discount_Finish__c FROM Pricebook2 LIMIT 200];
         return allPricebook;
     }
 
@@ -31,4 +22,44 @@ public with sharing class AvenirHousePricebookShow {
     public static void updatePricebookEntry(List<PricebookEntry> priceUpdate){
         update priceUpdate;
     }
+
+    @AuraEnabled
+    public static List<PricebookEntry> addNewProductToPricebook(String pricebookId){
+        List<PricebookEntry> product = [SELECT Id, Name, Product2Id, Pricebook2.Name, Pricebook2.Description, UnitPrice FROM PricebookEntry WHERE IsActive = true AND Pricebook2Id = '01s7Q00000A6q1sQAB' LIMIT 200];
+        List<PricebookEntry> existProduct = [SELECT Id, Name, Product2Id, Pricebook2.Name, Pricebook2.Description, UnitPrice FROM PricebookEntry WHERE IsActive = true AND Pricebook2Id = :pricebookId LIMIT 200];
+    
+        Map<String, Object> mapOfExistProduct = new Map<String, Object>();
+        List<PricebookEntry> sendProductToFront = new List<PricebookEntry>();
+        for(PricebookEntry item: existProduct){
+            mapOfExistProduct.put(item.Product2Id, item);
+        }
+
+        for(PricebookEntry item : product){
+            if(!mapOfExistProduct.containsKey(item.Product2Id)){
+                sendProductToFront.add(item);
+            }        
+        } 
+        return sendProductToFront;
+    }
+
+    @AuraEnabled
+    public static void saveNewProductInPricebook(List<PricebookEntry> newProductToPricebook, String pricebookId){
+        System.debug('test');
+        List<PricebookEntry> listToPush = new List<PricebookEntry>();
+        for(PricebookEntry item: newProductToPricebook){
+            PricebookEntry entryItem = new PricebookEntry();
+            entryItem.Pricebook2Id = pricebookId;
+            entryItem.Product2Id = (Id) item.Product2Id;
+            entryItem.IsActive = true ;
+            entryItem.UnitPrice = item.UnitPrice;
+            listToPush.add(entryItem);
+        }
+        insert listToPush;
+    }
+
+    @AuraEnabled
+    public static void deletePricebookProduct(List<PricebookEntry> pricebookItem){
+        delete pricebookItem;
+    }
+
 }

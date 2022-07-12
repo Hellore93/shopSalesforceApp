@@ -59,38 +59,30 @@
         }
     },
 
-    savePricebook: function(cmp, evt) {
+    savePricebook: function(cmp, evt, helper) {
         const obj = {
             Name: cmp.find('discountInputName').get('v.value'),
             Description: cmp.find('pricebookDescription').get('v.value'),
             IsActive: cmp.find('pricebookActive').get('v.value'),
+            StartDate: (cmp.find('startDate').get('v.value')),
+            EndDate: (cmp.find('endDate').get('v.value')),
             product: cmp.get('v.listClickedProduct')
         };
+
         console.log(obj);
+        console.log(typeof obj.StartDate);
         var action = cmp.get('c.saveNewPrice');
         action.setParams({ getFromFront: obj });
         action.setCallback(this, $A.getCallback(function(response) {
             var state = response.getState();
-            var toastEvent = $A.get("e.force:showToast");
             var closeModalAttribute = false;
             var parentCmp = cmp.get('v.parent');
             if (state === "SUCCESS") {
-                toastEvent.setParams({
-                    "title": "Success!",
-                    "type": "success",
-                    "message": "Adding succesfull"
-                });
-                toastEvent.fire();
-
+                helper.showSuccessToast(cmp, 'success', 'record updated successfully');
                 parentCmp.closeModalEvent(closeModalAttribute);
             } else if (state === "ERROR") {
                 var errors = response.getError();
-                toastEvent.setParams({
-                    "title": "Error!",
-                    "type": "error",
-                    "message": "Adding error"
-                });
-                toastEvent.fire();
+                helper.showSuccessToast(cmp, 'error', 'please try again');
                 parentCmp.closeModalEvent(closeModalAttribute);
             }
         }));
