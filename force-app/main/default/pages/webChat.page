@@ -1,4 +1,4 @@
-<apex:page>
+<apex:page >
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #005290;
