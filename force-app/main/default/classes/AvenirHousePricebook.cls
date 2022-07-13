@@ -29,7 +29,6 @@ public with sharing class AvenirHousePricebook {
         String houseNameSearch = '%' + houseName + '%';
         List<PricebookEntry> price =
         [SELECT Id, Name, Product2Id, UnitPrice FROM PricebookEntry WHERE IsActive = true AND Pricebook2Id = '01s7Q00000A6q1sQAB' AND Name LIKE :houseNameSearch LIMIT 200];
-        // return productList;
         List<PricebookEntry> priceWithDiscount = [SELECT Id, Name, Product2Id, Pricebook2.Name, Pricebook2.Description, UnitPrice FROM PricebookEntry WHERE IsActive = true LIMIT 200];
 
         List<PriceWithDiscount> listOfWrapper = new List<PriceWithDiscount>();

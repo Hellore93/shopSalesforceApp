@@ -1,4 +1,4 @@
-<aura:component description="AvenirHouseSearchSection" controller="AvenirHouseSearchSection" implements="flexipage:availableForRecordHome,force:hasRecordId">
+<aura:component description="AvenirHouseSearchSection" controller="AvenirHouseSearchSection" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <aura:handler name="init" value="{! this }" action="{! c.init }" />
     <aura:attribute name="mycolumns" type="List" />
@@ -15,8 +15,12 @@
     <aura:attribute name="informationModal" type="boolean" default="false" />
     <aura:attribute name="priceObject" type="List" default="['priceId', 'isActive', 'UnitPrice']" />
     <aura:attribute name="priceObjectName" type="String" />
+    <aura:attribute name="createNewProduct" type="boolean" default="false" />
 
-    <aura:handler event="force:showToast" action="{!c.refreshAll}" />
+    <!-- <aura:handler event="force:showToast" action="{!c.refreshAll}" /> -->
+    <aura:method name="closeModalEvent" action="{!c.closeNewProduct}" access="public">
+        <aura:attribute name="closeModalAttribute" type="Boolean" />
+    </aura:method>
 
     <lightning:card title="Search Section">
         <div class="searchSection">
@@ -29,6 +33,10 @@
             </div>
         </div>
 
+        <aura:if isTrue="{!v.createNewProduct}">
+            <c:AvenirHouseCreateProduct parent='{!this}' />
+        </aura:if>
+
         <lightning:card title="Data Table">
             <div class="productTable">
                 <lightning:datatable class="productRow" data="{! v.mydata }" columns="{! v.mycolumns }" keyField="Id" hideCheckboxColumn="true" onrowaction="{!c.handleRowAction}" />
@@ -39,6 +47,7 @@
             <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
                 <div class="slds-modal__container">
                     <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="modal-content-id-1">
+
                         <aura:if isTrue="{!v.informationModal}">
                             <h3 class="headlineProduct">Product Information</h3>
                             <force:recordView recordId="{!v.productId}" />

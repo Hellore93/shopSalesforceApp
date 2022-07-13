@@ -89,13 +89,7 @@
     },
 
     newHouse: function(component, event, helper) {
-        var createRecordEvent = $A.get("e.force:createRecord");
-        createRecordEvent.setParams({
-            "entityApiName": "Product2"
-        });
-        createRecordEvent.setParam("navigationLocation", "LOOKUP");
-        createRecordEvent.fire();
-        $A.enqueueAction(cmp.get('c.init'));
+        component.set('v.createNewProduct', true);
     },
 
     clear: function(cmp, evt, helper) {
@@ -168,5 +162,16 @@
 
     refreshAll: function(cmp, evt, helper) {
         $A.enqueueAction(cmp.get('c.init'));
+    },
+
+    closeNewProduct: function(cmp, evt, helper) {
+        var params = evt.getParam('arguments');
+        if (params) {
+            var closeModal = cmp.get('v.createNewProduct');
+            closeModal = params.closeModalAttribute;
+            cmp.set('v.createNewProduct', closeModal);
+        }
+        $A.enqueueAction(cmp.get('c.init'));
     }
+
 })
