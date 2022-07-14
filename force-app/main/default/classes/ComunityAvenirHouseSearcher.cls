@@ -19,7 +19,12 @@ public with sharing class ComunityAvenirHouseSearcher {
         return listOfProduct;
     }
 
-
+    @AuraEnabled(cacheable=true)
+    public static Product2 getProductById(String houseId){
+        Product2 houseObject = [SELECT Id, Name, ProductCode, Description, IsActive, Family, DisplayUrl, Avenir__c FROM Product2 
+        WHERE Avenir__c = true AND Id = :houseId];
+        return houseObject;
+    }
 
     @AuraEnabled(cacheable=true)
     public static List<Product2> startSearch(){
@@ -33,5 +38,12 @@ public with sharing class ComunityAvenirHouseSearcher {
 
         List<Product2> houseList = searchHomeByName(houseName);
         return houseList;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static Product2 startSearchById(String houseId){
+
+        Product2 houseObject = getProductById(houseId);
+        return houseObject;
     }
 }

@@ -1,9 +1,13 @@
-import { LightningElement, api } from 'lwc';
-const IMGURL = '/sfc/servlet.shepherd/version/download/'
+import { LightningElement, api, wire } from 'lwc';
+import pubsub from 'c/pubsub';
+import { CurrentPageReference } from 'lightning/navigation';
+
+const IMGURL = '/sfc/servlet.shepherd/version/download/';
 
 export default class AvenirHouseSearcherResultsSingleObject extends LightningElement {
-
+    @wire(CurrentPageReference) pageRef;
     @api singleHouseObject;
+    clickedElement;
 
     test() {
         console.log(JSON.stringify(this.singleHouseObject));
@@ -18,10 +22,11 @@ export default class AvenirHouseSearcherResultsSingleObject extends LightningEle
     get imgUrl() {
         if (this.result.Id) {
             const id = this.result.DisplayUrl;
-            console.log(id);
-            console.log(id.slice(id.length - 18));
-            console.log(IMGURL + id.slice(id.length - 18));
             return IMGURL + id.slice(id.length - 18);
         }
+    };
+
+    getThisItem(event) {
+        pubsub.fireEvent(this.pageRef, 'productDetailId', this.singleHouseObject.Id);
     };
 }

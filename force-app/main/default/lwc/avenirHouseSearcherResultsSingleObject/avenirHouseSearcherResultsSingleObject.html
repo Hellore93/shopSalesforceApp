@@ -1,7 +1,7 @@
 <template>
     <!-- <button onclick={test} >Test </button> -->
-    <div class="singleHouse">
-        <img class="photo" src={imgUrl} style="width: 250px; height:250px"/>
+    <div class="singleHouse" onclick={getThisItem}>
+        <img class="photo" src={imgUrl}/>
         <div class="houseName">{result.Name}</div>
         <div class="houseFamily">{result.Family}</div>
     </div>
