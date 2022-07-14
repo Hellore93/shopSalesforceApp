@@ -62,7 +62,7 @@
                                         <div class="photoItem">
                                             <img src="{!v.prefixURL + content.Id}" width="200" height="200" />
                                             <p class="photoTitle">{!content.Title}</p>
-                                            <button data-param="{!content.ContentDocumentId}" data-productid="{!content.FirstPublishLocationId}" class="btn" onclick="{!c.setToDisplayUrl}"><i class="fa fa-home"></i></button>
+                                            <button data-param="{!content.Id}" data-productid="{!content.FirstPublishLocationId}" class="btn" onclick="{!c.setToDisplayUrl}"><i class="fa fa-home"></i></button>
                                             <button data-value="{!content.ContentDocumentId}" data-index="{!i}" class="btn" iconName="action:delete" onclick="{! c.handleLikeButtonClick }" alternativeText="Delete"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </aura:iteration>

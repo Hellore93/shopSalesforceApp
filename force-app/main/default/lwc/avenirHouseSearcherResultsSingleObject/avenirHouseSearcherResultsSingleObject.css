@@ -1,0 +1,18 @@
+.singleHouse {
+    height: 400px;
+    width: 300px;
+    text-align: center;
+}
+
+.photo {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 15px;
+}
+
+.houseName {
+    font-size: larger;
+    font-weight: 700;
+}
+
+.houseFamily {}

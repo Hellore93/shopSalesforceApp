@@ -1,0 +1,23 @@
+.hederParagraph {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+.iterator {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.singleHouse {
+    height: 400px;
+    width: 300px;
+    text-align: center;
+}
+
+.photo {
+    width: 250px;
+    height: 250px;
+}

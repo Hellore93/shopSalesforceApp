@@ -12,10 +12,10 @@
 
     handleUploadFinished: function(cmp, evt, helper, action) {
         const uploadedFiles = evt.getParam("files");
+        console.log(uploadedFiles);
         let photoLink = '';
         uploadedFiles.forEach(file =>
-            // console.log(file.documentId),
-            photoLink = 'https://britenet93-dev-ed.my.salesforce.com/sfc/servlet.shepherd/document/download/' + file.documentId
+            photoLink = 'https://britenet93-dev-ed.my.salesforce.com/sfc/servlet.shepherd/document/download/' + file.contentVersionId
         );
         var action = cmp.get('c.saveProductMainPhoto');
         action.setParams({
