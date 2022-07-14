@@ -6,7 +6,7 @@
     <aura:attribute name="fields" type="String[]" default="['Name','ProductCode','Description','Family','IsActive']" />
     <aura:attribute name="recordId" type="String" />
     <aura:attribute name="recordName" type="String" />
-    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg', '.webp']" />
 
     <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
         <div class="slds-modal__container">
