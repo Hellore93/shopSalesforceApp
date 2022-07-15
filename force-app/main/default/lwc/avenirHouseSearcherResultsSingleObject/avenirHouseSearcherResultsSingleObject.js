@@ -9,6 +9,7 @@ export default class AvenirHouseSearcherResultsSingleObject extends LightningEle
         console.log(JSON.stringify(this.singleHouseObject));
     }
     get result() {
+        // console.log(this.singleHouseObject);
         if (this.singleHouseObject) {
             return this.singleHouseObject;
         }

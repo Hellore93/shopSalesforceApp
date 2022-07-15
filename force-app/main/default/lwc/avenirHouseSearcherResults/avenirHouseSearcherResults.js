@@ -18,7 +18,7 @@ export default class AvenirHouseSearcherResults extends LightningElement {
     @wire(startSearch, {})
     data({ error, data }) {
         if (data) {
-            // console.log(typeof data);
+            console.log(data);
             this.houseList = data;
         } else if (error) {
             console.log('Something went wrong:', error);
