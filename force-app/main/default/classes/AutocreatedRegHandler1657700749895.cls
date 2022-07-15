@@ -70,6 +70,7 @@ global class AutocreatedRegHandler1657700749895 implements Auth.RegistrationHand
       System.debug('Update User called for: ' + data.email);
       
       User u = new User(id=userId);
+      u.CommunityNickname = data.fullName;
       u.email = data.email;
       u.lastName = data.lastName;
       u.firstName = data.firstName;
