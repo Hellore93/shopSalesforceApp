@@ -23,9 +23,14 @@
 
     handleUploadFinished: function(cmp, evt, helper, action) {
         const uploadedFiles = evt.getParam("files");
+        console.log(uploadedFiles);
         let photoLink = '';
         uploadedFiles.forEach(file =>
+<<<<<<< HEAD
             photoLink = 'https://britenet93-dev-ed.my.salesforce.com/sfc/servlet.shepherd/document/download/' + file.documentId
+=======
+            photoLink = 'https://britenet93-dev-ed.my.salesforce.com/sfc/servlet.shepherd/document/download/' + file.contentVersionId
+>>>>>>> 9477c24455776c6ac1e7d0ecff772528fe1be2c9
         );
         var action = cmp.get('c.saveProductMainPhoto');
         action.setParams({

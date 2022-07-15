@@ -1,0 +1,20 @@
+text {
+    font-size: 18px;
+}
+
+.houseHeader {
+    text-align: center;
+    font-size: medium;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+.houseDetailWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.houseInformation {
+    width: 70%;
+}

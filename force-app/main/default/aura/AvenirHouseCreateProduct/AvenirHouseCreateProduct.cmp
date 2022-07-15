@@ -6,10 +6,14 @@
     <aura:attribute name="fields" type="String[]" default="['Name','ProductCode','Description','Family','IsActive']" />
     <aura:attribute name="recordId" type="String" />
     <aura:attribute name="recordName" type="String" />
+<<<<<<< HEAD
     <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
     <aura:attribute name="galleryPhoto" type="boolean" default="false" />
     <aura:attribute name="photoList" type="List" default="[]" />
     <aura:attribute name="prefixURL" type="String" default="/sfc/servlet.shepherd/version/download/" />
+=======
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg', '.webp']" />
+>>>>>>> 9477c24455776c6ac1e7d0ecff772528fe1be2c9
 
     <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
         <div class="slds-modal__container">
