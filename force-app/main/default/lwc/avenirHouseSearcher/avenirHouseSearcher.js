@@ -12,7 +12,6 @@ export default class AvenirHouseSearcher extends LightningElement {
     @wire(startSearch, { houseName: '$inputTextValue' })
     data({ error, data }) {
         if (data) {
-            console.log(data);
             this.houseList = JSON.stringify(data);
             pubsub.fireEvent(this.pageRef, 'eventdetails', this.houseList);
         } else if (error) {
