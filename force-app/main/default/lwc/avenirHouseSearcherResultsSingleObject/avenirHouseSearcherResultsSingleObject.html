@@ -1,8 +1,13 @@
 <template>
     <!-- <button onclick={test} >Test </button> -->
     <div class="singleHouse">
-        <img class="photo" src={imgUrl} style="width: 250px; height:250px"/>
-        <div class="houseName">{result.Name}</div>
-        <div class="houseFamily">{result.Family}</div>
+        <img class="photo" src={imgUrl}/>
+        <div class="houseDescription">
+            <div class="houseName">{result.Name}</div>
+            <div class="priceSection">
+                <div class={priceClass}>{price.productStandardPrice.UnitPrice} €</div>
+                <div if:true={discountPrice} class="priceText">{discountPrice} €</div>
+            </div>        
+        </div>    
     </div>
 </template>

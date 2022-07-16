@@ -15,10 +15,9 @@ export default class AvenirHouseSearcherResults extends LightningElement {
         registerListener('eventdetails', this.sutUpDetails, this);
     }
 
-    @wire(startSearch, {})
+    @wire(startSearch, { houseName: '' })
     data({ error, data }) {
         if (data) {
-            console.log(data);
             this.houseList = data;
         } else if (error) {
             console.log('Something went wrong:', error);

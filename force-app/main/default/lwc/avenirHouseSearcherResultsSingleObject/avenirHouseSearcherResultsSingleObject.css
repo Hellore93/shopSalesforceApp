@@ -1,18 +1,41 @@
 .singleHouse {
     height: 400px;
-    width: 300px;
+    width: 500px;
     text-align: center;
+    margin: 0.5em;
 }
 
 .photo {
-    width: 250px;
-    height: 250px;
+    height: 400px;
+    width: 500px;
     margin-bottom: 15px;
 }
 
 .houseName {
     font-size: larger;
     font-weight: 700;
+    color: white;
+    margin-left: 10px;
 }
 
-.houseFamily {}
+.priceSection {
+    margin-left: 10px;
+}
+
+.priceText {
+    font-size: 20px;
+    color: white;
+}
+
+.oldPrice {
+    font-size: 20px;
+    color: white;
+    text-decoration: line-through rgb(255, 0, 0);
+}
+
+.houseDescription {
+    position: relative;
+    left: 0px;
+    top: -410px;
+    text-align: left;
+}
