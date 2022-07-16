@@ -1,8 +1,11 @@
-import { LightningElement, api } from 'lwc';
-const IMGURL = '/sfc/servlet.shepherd/version/download/'
+import { LightningElement, api, wire } from 'lwc';
+import pubsub from 'c/pubsub';
+import { CurrentPageReference } from 'lightning/navigation';
+
+const IMGURL = '/sfc/servlet.shepherd/version/download/';
 
 export default class AvenirHouseSearcherResultsSingleObject extends LightningElement {
-
+    @wire(CurrentPageReference) pageRef;
     @api singleHouseObject;
     discountPrice;
     priceClass = 'priceText';

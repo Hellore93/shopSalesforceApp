@@ -3,11 +3,7 @@ import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
 import startSearch from '@salesforce/apex/ComunityAvenirHouseSearcher.startSearch';
 
-const IMGURL = '/sfc/servlet.shepherd/version/download/'
-
 export default class AvenirHouseSearcherResults extends LightningElement {
-    message;
-    // @track listOfHouse;
     @track houseList;
     @wire(CurrentPageReference) pageRef;
 
@@ -39,8 +35,6 @@ export default class AvenirHouseSearcherResults extends LightningElement {
         }
         return null;
     };
-
-
 
     testVariable() {
         console.log(this.houseList);

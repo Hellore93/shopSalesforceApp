@@ -24,4 +24,33 @@ public with sharing class AvenirHouseCreateProduct {
 
         update existProduct;
     }
+
+    @AuraEnabled
+    public static void cancelProduct(String productId){
+        Product2 cancelProduct = new Product2();
+        cancelProduct.Id = productId;
+        delete cancelProduct;
+    }
+
+    @AuraEnabled
+    public static List<ContentVersion> getProductPhoto(String productId){
+        List<ContentVersion> productPhoto = 
+        [SELECT FirstPublishLocationId, FileType, ContentBodyId, Title, 	
+        ContentDocumentId FROM ContentVersion WHERE FirstPublishLocationId = :productId LIMIT 100];
+        return productPhoto;
+    }
+
+    @AuraEnabled
+    public static void setDefaultPhotoUrl(String productId, String link){
+        Product2 objectToSetDefaultPhoto = [SELECT  Id, DisplayUrl, Name FROM Product2 WHERE Id= :productId LIMIT 200];
+        objectToSetDefaultPhoto.DisplayUrl = link;
+        update objectToSetDefaultPhoto;
+    }
+
+    @AuraEnabled
+    public static ContentDocument deletePhotoById(String photoId){
+        ContentDocument contentToDelete = [SELECT Id, Title FROM ContentDocument WHERE Id = :photoId];
+        delete contentToDelete;
+        return contentToDelete;
+    }
 }

@@ -25,5 +25,29 @@
         var closeModalAttribute = false;
         var parentCmp = cmp.get('v.parent');
         parentCmp.closeModalEvent(closeModalAttribute);
+        var action = cmp.get('c.cancelProduct');
+        action.setParams({
+            productId: cmp.get('v.recordId')
+        });
+        $A.enqueueAction(action);
     },
+
+    getPhoto: function(cmp, evt) {
+        console.log('działam');
+        var action = cmp.get("c.getProductPhoto");
+        action.setParams({ productId: cmp.get('v.recordId') });
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                cmp.set('v.photoList', response.getReturnValue());
+                console.log(cmp.get('v.photoList'));
+
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                console.error(errors);
+            }
+        });
+
+        $A.enqueueAction(action);
+    }
 })

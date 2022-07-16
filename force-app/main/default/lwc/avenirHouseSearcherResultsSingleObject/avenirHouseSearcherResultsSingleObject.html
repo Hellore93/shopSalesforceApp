@@ -1,5 +1,6 @@
 <template>
     <!-- <button onclick={test} >Test </button> -->
+<<<<<<< HEAD
     <div class="singleHouse">
         <img class="photo" src={imgUrl}/>
         <div class="houseDescription">
@@ -9,5 +10,11 @@
                 <div if:true={discountPrice} class="priceText">{discountPrice} €</div>
             </div>        
         </div>    
+=======
+    <div class="singleHouse" onclick={getThisItem}>
+        <img class="photo" src={imgUrl}/>
+        <div class="houseName">{result.Name}</div>
+        <div class="houseFamily">{result.Family}</div>
+>>>>>>> 19a670ac12400249e05db812ea6838d35a123faf
     </div>
 </template>

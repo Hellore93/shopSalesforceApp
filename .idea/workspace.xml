@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="39a349b1-8c4c-4469-b341-fecd26f80756" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearch/AccountSearch.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearch/AccountSearch.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearch/AccountSearch.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchDetails/AccountSearchDetails.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchDetails/AccountSearchDetails.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchDetails/AccountSearchDetails.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchDetails/AccountSearchDetailsController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchMapp/AccountSearchMapp.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchMapp/AccountSearchMapp.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchMapp/AccountSearchMappController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchSection/AccountSearchSection.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchSection/AccountSearchSection.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchSection/AccountSearchSection.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchSection/AccountSearchSectionController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AccountSearchSection/AccountSearchSectionHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AcountSearchSection/AcountSearchSection.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/AcountSearchSection/AcountSearchSection.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/FilmInformation/FilmInformation.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/FilmInformation/FilmInformation.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/FilmInformation/FilmInformation.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/FilmInformation/FilmInformationController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/FilmInformation/FilmInformationHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/NewComponent/NewComponent.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/NewComponent/NewComponent.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilms.auradoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilms.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilms.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilms.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilms.design" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilms.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilmsController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilmsHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/SearchFilms/SearchFilmsRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/TriggerHandler/TriggerHandler.intf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/TriggerHandler/TriggerHandler.intf-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/UpcomingFilms/UpcomingFilms.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/UpcomingFilms/UpcomingFilms.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/UpcomingFilms/UpcomingFilmsController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/UpcomingFilms/UpcomingFilmsHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/forgotPassword/forgotPassword.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/forgotPassword/forgotPassword.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/forgotPassword/forgotPassword.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/forgotPassword/forgotPassword.design" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/forgotPassword/forgotPasswordController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/forgotPassword/forgotPasswordHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/loginForm/loginForm.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/loginForm/loginForm.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/loginForm/loginForm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/loginForm/loginForm.design" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/loginForm/loginFormController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/loginForm/loginFormHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/selfRegister/selfRegister.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/selfRegister/selfRegister.cmp-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/selfRegister/selfRegister.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/selfRegister/selfRegister.design" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/selfRegister/selfRegisterController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/selfRegister/selfRegisterHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/setExpId/setExpId.evt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/setExpId/setExpId.evt-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/setStartUrl/setStartUrl.evt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/aura/setStartUrl/setStartUrl.evt-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SiteFooter.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SiteFooter.component-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SiteHeader.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SiteHeader.component-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SiteLogin.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SiteLogin.component-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SitePoweredBy.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/components/SitePoweredBy.component-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc-recipes/force-app/main/default/lwc/ldsUtils.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc-recipes/force-app/main/default/lwc/ldsUtils/ldsUtils.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc-recipes/force-app/main/default/lwc/ldsUtils/ldsUtils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorFilms/actorFilms.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorFilms/actorFilms.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorFilms/actorFilms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorFilms/actorFilms.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorInformationModal/actorInformationModal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorInformationModal/actorInformationModal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorInformationModal/actorInformationModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/actorInformationModal/actorInformationModal.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/avenirHouseSearch/AvenirHouseSearch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/avenirHouseSearch/avenirHouseSearch.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/avenirHouseSearch/avenirHouseSearch.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/boatSearchForm/boatSearchForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/boatSearchForm/boatSearchForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/boatSearchForm/boatSearchForm.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactCreator/contactCreator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactCreator/contactCreator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactCreator/contactCreator.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactCreator/wireGetRecordProperty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactList/contactList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactList/contactList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/contactList/contactList.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createNewActor/createNewActor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createNewActor/createNewActor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createNewActor/createNewActor.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createNewFilm/createNewFilm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createNewFilm/createNewFilm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createNewFilm/createNewFilm.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createRecordModal/createRecordModal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createRecordModal/createRecordModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/createRecordModal/createRecordModal.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/deleteComentary/deleteComentary.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/deleteComentary/deleteComentary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/deleteComentary/deleteComentary.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/deleteComentary/deleteComentary.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmBlacklist/filmBlacklist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmBlacklist/filmBlacklist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmBlacklist/filmBlacklist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmBlacklist/filmBlacklist.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmCast/filmCast.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmCast/filmCast.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmCast/filmCast.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmCast/filmCast.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmInformationModal/filmInformationModal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmInformationModal/filmInformationModal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmInformationModal/filmInformationModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/filmInformationModal/filmInformationModal.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/helloWorld/helloWorld.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/helloWorld/helloWorld.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/helloWorld/helloWorld.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/ldsUtils/ldsUtils.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/ldsUtils/ldsUtils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/ldsUtils/ldsUtils.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/listOfContacts/listOfContacts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/listOfContacts/listOfContacts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/listOfContacts/listOfContacts.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/movieService/movieService.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/movieService/movieService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/movieService/movieService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/movieService/movieService.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/pubsub/pubsub.html" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/pubsub/pubsub.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/pubsub/pubsub.js" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/pubsub/pubsub.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/pubsub/pubsub.js-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/pubsub/pubsub.js-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecord/searchActorRecord.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecord/searchActorRecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecord/searchActorRecord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecord/searchActorRecord.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordBlacklist/searchActorRecordBlacklist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordBlacklist/searchActorRecordBlacklist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordBlacklist/searchActorRecordBlacklist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordBlacklist/searchActorRecordBlacklist.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordImage/searchActorRecordImage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordImage/searchActorRecordImage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordImage/searchActorRecordImage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchActorRecordImage/searchActorRecordImage.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchCounter/searchCounter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchCounter/searchCounter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchCounter/searchCounter.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecord/searchFilmRecord.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecord/searchFilmRecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecord/searchFilmRecord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecord/searchFilmRecord.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecordImage/searchFilmRecordImage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecordImage/searchFilmRecordImage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecordImage/searchFilmRecordImage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchFilmRecordImage/searchFilmRecordImage.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/star/star.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/star/star.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/star/star.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/star/star.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRating/starRating.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRating/starRating.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRating/starRating.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRating/starRating.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRatingActor/starRatingActor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRatingActor/starRatingActor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRatingActor/starRatingActor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/starRatingActor/starRatingActor.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmBlacklist/upcomingFilmBlacklist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmBlacklist/upcomingFilmBlacklist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmBlacklist/upcomingFilmBlacklist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmBlacklist/upcomingFilmBlacklist.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmInformationModal/upcomingFilmInformationModal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmInformationModal/upcomingFilmInformationModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmInformationModal/upcomingFilmInformationModal.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmRecord/upcomingFilmRecord.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmRecord/upcomingFilmRecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmRecord/upcomingFilmRecord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/upcomingFilmRecord/upcomingFilmRecord.js-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/messageChannels/BoatMessageChannel.messageChannel-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/messageChannels/lwcExample.messageChannel-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/AnswersHome.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/AnswersHome.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/AuraSearcher.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/BandwidthExceeded.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/BandwidthExceeded.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ChangePassword.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ChangePassword.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesLanding.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesLanding.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesLogin.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesLogin.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesSelfReg.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesSelfReg.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesSelfRegConfirm.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesSelfRegConfirm.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesTemplate.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/CommunitiesTemplate.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/DoctorEdit.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/DoctorEdit.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/DoctorSearchSoap.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/DoctorSearchSoap.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/DoctorView.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/DoctorView.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/Exception.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/Exception.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/FileNotFound.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/FileNotFound.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ForgotPassword.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ForgotPassword.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ForgotPasswordConfirm.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ForgotPasswordConfirm.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/HospitalEdit.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/HospitalEdit.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/HospitalSearchRest.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/HospitalSearchRest.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/HospitalView.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/HospitalView.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/IdeasHome.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/IdeasHome.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ImportDoctors.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ImportDoctors.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ImportTemplate.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/ImportTemplate.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/InMaintenance.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/InMaintenance.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/MicrobatchSelfReg.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/MicrobatchSelfReg.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/MyProfilePage.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/MyProfilePage.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/PublicSiteHospital.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/PublicSiteHospital.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SearchDoctor.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SearchDoctor.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteLogin.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteLogin.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteRegister.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteRegister.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteRegisterConfirm.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteRegisterConfirm.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteTemplate.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/SiteTemplate.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/StdExceptionTemplate.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/StdExceptionTemplate.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/Unauthorized.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/Unauthorized.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/UnderConstruction.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/UnderConstruction.page-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/webChat.page" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/pages/webChat.page-meta.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BtTNcOXI2xP3Q3nDk0dr8LZkPW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Projekty/Salesforce/FirstProject/ForceAcademyProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="39a349b1-8c4c-4469-b341-fecd26f80756" name="Changes" comment="" />
+      <created>1657724346156</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657724346156</updated>
+      <workItem from="1657724350810" duration="36000" />
+      <workItem from="1657724398211" duration="2186000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
