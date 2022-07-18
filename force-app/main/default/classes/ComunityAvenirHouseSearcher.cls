@@ -32,6 +32,22 @@ public with sharing class ComunityAvenirHouseSearcher {
     }
 
     @AuraEnabled(cacheable=true)
+    public static List<ContentVersion> getProductPhotoGallery(String productId){
+        List<ContentVersion> productPhoto = 
+        [SELECT FirstPublishLocationId, FileType, ContentBodyId, Title, 	
+        ContentDocumentId FROM ContentVersion WHERE FirstPublishLocationId = :productId LIMIT 100];
+        System.debug(productPhoto);
+        return productPhoto;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Product2> getProductById(String productId){
+        List<Product2> listOfProduct = [SELECT Id, Name, ProductCode, Description, IsActive, Family, DisplayUrl, Avenir__c FROM Product2 
+        WHERE Id = :productId ];
+        return listOfProduct;
+    }
+
+    @AuraEnabled(cacheable=true)
     public static List<productWithPriceWrapper> startSearch(String houseName){
         List<Product2> allHouseList = searchHomeByName(houseName);
 
@@ -40,6 +56,30 @@ public with sharing class ComunityAvenirHouseSearcher {
         List<productWithPriceWrapper> listProductWithPrice = new List<productWithPriceWrapper>();
 
         for(Product2 item : allHouseList) {
+            List<PricebookEntry> listOfDiscountPrice = new List<PricebookEntry>();
+            
+            for(PricebookEntry element : listOfDiscount){
+                if(element.Product2Id == item.Id){
+                    listOfDiscountPrice.add(element);
+                }
+            }
+            productWithPriceWrapper productWithPrice = new productWithPriceWrapper(item, mapOfPrice.get(item.Id), listOfDiscountPrice);
+            listProductWithPrice.add(productWithPrice);
+        } 
+
+        return listProductWithPrice;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<productWithPriceWrapper> getProductDescription(String houseId){
+        System.debug(houseId);
+        
+        List<Product2> productDetail = getProductById(houseId);
+        Map<String, PricebookEntry> mapOfPrice = getStandardPriceList();
+        List<PricebookEntry> listOfDiscount = getDiscountPriceList();        
+        List<productWithPriceWrapper> listProductWithPrice = new List<productWithPriceWrapper>();
+
+        for(Product2 item : productDetail) {
             List<PricebookEntry> listOfDiscountPrice = new List<PricebookEntry>();
             
             for(PricebookEntry element : listOfDiscount){

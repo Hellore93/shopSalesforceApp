@@ -1,0 +1,19 @@
+<template>
+  <div class="gallery" if:true={showModal}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_large modalWrapper">
+        <div class="slds-modal__container">
+          <div class="slds-modal__content slds-p-around_medium galleryContent" id="modal-content-id-1">
+            <img class="housePhoto" src={imgUrl} />
+            <div class="navigationSection">
+              <lightning-button class="navButton" variant="brand" label="prev" onclick={prev} ></lightning-button>
+              <lightning-button class="navButton" variant="brand" label="next" onclick={next} ></lightning-button>
+            </div>
+          </div>
+          <div class="slds-modal__footer">
+            <lightning-button variant="brand" label="Close" onclick={closeModal} ></lightning-button>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </div>
+</template>

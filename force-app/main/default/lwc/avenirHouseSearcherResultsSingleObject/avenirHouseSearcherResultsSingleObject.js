@@ -1,17 +1,19 @@
-import { LightningElement, api, wire } from 'lwc';
+import { LightningElement, api, wire, track } from 'lwc';
 import pubsub from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
+import { NavigationMixin } from 'lightning/navigation';
 
 const IMGURL = '/sfc/servlet.shepherd/version/download/';
 
-export default class AvenirHouseSearcherResultsSingleObject extends LightningElement {
+export default class AvenirHouseSearcherResultsSingleObject extends NavigationMixin(LightningElement) {
     @wire(CurrentPageReference) pageRef;
     @api singleHouseObject;
     discountPrice;
     priceClass = 'priceText';
 
+    @track url;
+
     get result() {
-        // console.log(this.singleHouseObject);
         if (this.singleHouseObject) {
             this.isDiscountExist();
             return this.singleHouseObject.product;
@@ -35,9 +37,23 @@ export default class AvenirHouseSearcherResultsSingleObject extends LightningEle
 
     isDiscountExist() {
         if (this.price.productDiscountPrice[0]) {
-            this.discountPrice = this.price.productDiscountPrice[0].UnitPrice;
+            const arrayOfPrice = []
+            this.price.productDiscountPrice.forEach(element => arrayOfPrice.push(element.UnitPrice));
+            this.discountPrice = Math.min(...arrayOfPrice);
             this.priceClass = 'oldPrice';
         }
+    };
+
+    showDetails() {
+        pubsub.fireEvent(this.pageRef, 'productDetail', this.singleHouseObject);
+        localStorage['clickedElement'] = JSON.stringify(this.singleHouseObject);
+        const config = {
+            type: 'standard__webPage',
+            attributes: {
+                url: '/detail/' + this.result.Id
+            }
+        };
+        this[NavigationMixin.Navigate](config);
     }
 
 }

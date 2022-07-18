@@ -18,3 +18,22 @@ text {
 .houseInformation {
     width: 70%;
 }
+
+.housePhoto {
+    width: 250px;
+    height: 250px
+}
+
+.sectionName {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 15px 0px;
+}
+
+.iterator {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

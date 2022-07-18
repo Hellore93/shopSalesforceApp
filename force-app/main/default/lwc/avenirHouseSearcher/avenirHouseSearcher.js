@@ -28,4 +28,5 @@ export default class AvenirHouseSearcher extends LightningElement {
             this.inputTextValue = this.template.querySelector(".searchInput").value;
         }
     }
+
 }

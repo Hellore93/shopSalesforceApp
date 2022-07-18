@@ -1,12 +1,26 @@
 <template>
-    <div if:true={productObject}>
-        <h1 class="houseHeader">{houseObject.Name}</h1>
-        <div class="houseDetailWrapper">
-            <div class="houseInformation">
-                <div><b>House type:</b> {houseObject.Family}</div>
-                <h1><b>Description</b>{houseObject.Description}</h1>
-            </div>        
-            <img class="housePhoto" src={imgUrl} style="width: 250px; height:250px"/>
+    <!-- <lightning-button variant="brand" label="test" onclick={test}></lightning-button> -->
+    <div if:true={clickedObjectDeails}>
+        <div class="detailSection">
+            <h1 class="houseHeader">{houseObject.product.Name}</h1>
+            <h2 class="sectionName">House details</h2>
+            <div class="houseDetailWrapper">
+                <div class="houseInformation">
+                    <div><b>House type: </b> {houseObject.product.Family}</div>
+                    <h1><b>Description: </b>{houseObject.product.Description}</h1>
+                    <div><b>Price: </b>{houseObject.productStandardPrice.UnitPrice} €</div>
+                    <div if:true={discountPrice}><b>Actual Price: </b>{discountPrice} €</div>
+                </div>        
+                <img class="housePhoto" src={imgUrl}/>
+            </div>
         </div>
-    </div>
+        <div class="photoGallery" if:true={photoGallery}>
+            <h2 class="sectionName">Photo gallery</h2>
+            <div class="iterator">
+            <template for:each={photoGallery} for:item="photo">
+                <c-avenir-house-details-photo-gallery key={photo.id} photo-item={photo} photo-list={objectToSend}></c-avenir-house-details-photo-gallery>
+            </template>
+</div>
+</div>
+</div>
 </template>
