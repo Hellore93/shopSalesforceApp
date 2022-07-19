@@ -4,7 +4,7 @@ public with sharing class AvenirHouseSearchSection {
         public static List<Product2> getProducts() {
     
         List<Product2> productList =
-        [SELECT Id, Name, Family, Description, ProductCode FROM Product2 WHERE Avenir__c = TRUE LIMIT 100];
+        [SELECT Id, Name, Family, Description, ProductCode, Country__c, City__c  FROM Product2 WHERE Avenir__c = TRUE LIMIT 100];
         return productList;
         }
 

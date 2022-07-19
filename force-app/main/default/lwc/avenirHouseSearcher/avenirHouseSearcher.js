@@ -1,5 +1,5 @@
 import { LightningElement, wire } from 'lwc';
-import startSearchByName from '@salesforce/apex/ComunityAvenirHouseSearcher.startSearchByName';
+import startSearch from '@salesforce/apex/ComunityAvenirHouseSearcher.startSearch';
 import pubsub from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
 
@@ -9,10 +9,9 @@ export default class AvenirHouseSearcher extends LightningElement {
     inputTextValue;
 
 
-    @wire(startSearchByName, { houseName: '$inputTextValue' })
+    @wire(startSearch, { houseName: '$inputTextValue' })
     data({ error, data }) {
         if (data) {
-            console.log(data);
             this.houseList = JSON.stringify(data);
             pubsub.fireEvent(this.pageRef, 'eventdetails', this.houseList);
         } else if (error) {
@@ -29,4 +28,5 @@ export default class AvenirHouseSearcher extends LightningElement {
             this.inputTextValue = this.template.querySelector(".searchInput").value;
         }
     }
+
 }

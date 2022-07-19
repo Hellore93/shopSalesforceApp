@@ -1,2 +1,7 @@
-.THIS {
+.THIS {}
+
+.THIS .buttonSection {}
+
+.THIS .nextNewButton {
+    margin-top: 0;
 }

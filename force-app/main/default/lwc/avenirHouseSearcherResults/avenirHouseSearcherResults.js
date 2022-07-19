@@ -3,11 +3,7 @@ import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
 import startSearch from '@salesforce/apex/ComunityAvenirHouseSearcher.startSearch';
 
-const IMGURL = '/sfc/servlet.shepherd/version/download/'
-
 export default class AvenirHouseSearcherResults extends LightningElement {
-    message;
-    // @track listOfHouse;
     @track houseList;
     @wire(CurrentPageReference) pageRef;
 
@@ -15,10 +11,9 @@ export default class AvenirHouseSearcherResults extends LightningElement {
         registerListener('eventdetails', this.sutUpDetails, this);
     }
 
-    @wire(startSearch, {})
+    @wire(startSearch, { houseName: '' })
     data({ error, data }) {
         if (data) {
-            // console.log(typeof data);
             this.houseList = data;
         } else if (error) {
             console.log('Something went wrong:', error);
@@ -40,8 +35,6 @@ export default class AvenirHouseSearcherResults extends LightningElement {
         }
         return null;
     };
-
-
 
     testVariable() {
         console.log(this.houseList);
