@@ -19,7 +19,35 @@ public with sharing class AvenirHousePricebookShow {
     }
 
     @AuraEnabled
+    public static Map<String, Object> getStandardPrice(){
+        List<PricebookEntry> standardPriceList = [SELECT Id, Name, Pricebook2Id, Product2Id, UnitPrice, IsActive FROM PricebookEntry WHERE Pricebook2Id = '01s7Q00000A6q1sQAB' LIMIT 200];
+        Map<String, Object> mapOfStandardPrice = new Map<String, Object>();
+        for(PricebookEntry item : standardPriceList){
+            mapOfStandardPrice.put(item.Product2Id, item);
+        }
+        
+        return mapOfStandardPrice;
+    }
+
+    @AuraEnabled
     public static void updatePricebookEntry(List<PricebookEntry> priceUpdate){
+        Map<String, Object> standardPriceMap = getStandardPrice();
+        List<PricebookEntry> pricebookToUpdate = new List<PricebookEntry>();
+        for(PricebookEntry item : priceUpdate){
+            PricebookEntry obj =  (PricebookEntry) standardPriceMap.get(item.Product2Id);
+            if(item.UnitPrice > obj.UnitPrice){
+                PricebookEntry newEditObject = new PricebookEntry();
+                newEditObject.Id = item.Id;
+                newEditObject.Pricebook2Id = item.Pricebook2Id;
+                newEditObject.Product2Id = item.Product2Id;
+                newEditObject.UnitPrice = obj.UnitPrice;
+                    // IsActive = item.IsActive
+                
+                pricebookToUpdate.add(newEditObject);
+            } else {
+                pricebookToUpdate.add(item);
+            }
+        }
         update priceUpdate;
     }
 

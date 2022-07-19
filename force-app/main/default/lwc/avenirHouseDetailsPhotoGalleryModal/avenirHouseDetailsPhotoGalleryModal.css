@@ -1,6 +1,4 @@
 .housePhoto {
-    /* width: 800px;
-    height: 500px; */
     width: 75vw;
     height: 70vh;
     margin: 0 auto;
@@ -20,7 +18,7 @@
 }
 
 .navButton {
-    margin: 0 36vw;
+    margin: 0 38vw;
 }
 
 .modalWrapper {

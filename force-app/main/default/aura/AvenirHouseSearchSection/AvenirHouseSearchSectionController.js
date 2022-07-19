@@ -13,6 +13,8 @@
             { label: 'Type', fieldName: 'Family', type: 'text' },
             { label: 'Description', fieldName: 'Description', type: 'text' },
             { label: 'House code', fieldName: 'ProductCode', type: 'text' },
+            { label: 'Country', fieldName: 'Country__c', type: 'text' },
+            { label: 'City', fieldName: 'City__c', type: 'text' },
             { type: 'action', typeAttributes: { rowActions: actions } }
         ]);
         var action = cmp.get('c.getProducts');

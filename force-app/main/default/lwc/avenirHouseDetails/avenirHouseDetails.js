@@ -12,26 +12,35 @@ export default class AvenirHouseDetails extends LightningElement {
     discountPrice;
     photoGallery;
     objectToSend;
+    mapMarkers;
 
     connectedCallback() {
         let prodId = this.pageRef.attributes.recordId;
         getProductDescription({ houseId: prodId }).then(
             (result) => { this.clickedObjectDeails = result[0] }
         ).catch((error) => { console.log(error); });
+        console.log(JSON.stringify(this.clickedObjectDeails));
         this.photoGalleryFunction();
     }
 
     photoGalleryFunction() {
         getProductPhotoGallery({ productId: this.pageRef.attributes.recordId }).then(
-            (result) => { this.photoGallery = result, this.objectToSend = JSON.stringify(result) }
+            (result) => {
+                this.photoGallery = result,
+                    this.objectToSend = JSON.stringify(result),
+                    console.log(this.clickedObjectDeails);
+                this.mapMarkers = [{
+                    location: {
+                        Street: this.clickedObjectDeails.product.Street__c,
+                        City: this.clickedObjectDeails.product.City__c,
+                        Country: this.clickedObjectDeails.product.Country__c,
+                    },
+                    title: 'The Landmark Building',
+                    description: 'Historic <b>11-story</b> building completed in <i>1916</i>',
+                }, ];
+            }
         ).catch((error) => { console.log(error); });
     };
-
-
-    test() {
-        // this.objectToSend = JSON.stringify(this.photoGallery);
-        console.log(this.objectToSend);
-    }
 
     get houseObject() {
         if (this.clickedObjectDeails) {

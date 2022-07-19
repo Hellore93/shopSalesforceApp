@@ -3,7 +3,9 @@
     <div class="singleHouse" onclick={showDetails}>
         <img class="photo" src={imgUrl}/>
         <div class="houseDescription">
-            <div class="houseName">{result.Name}</div>
+            <div class="houseName header">{result.Name}</div>
+            <div class="houseName">Type: {result.Family}</div>
+            <div class="houseName">Localization: {result.Country__c}</div>
             <div class="priceSection">
                 <div class={priceClass}>{price.productStandardPrice.UnitPrice} €</div>
                 <div if:true={discountPrice} class="priceText">{discountPrice} €</div>

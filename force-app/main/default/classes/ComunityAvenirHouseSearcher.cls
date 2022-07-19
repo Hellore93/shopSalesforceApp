@@ -6,9 +6,9 @@ public with sharing class ComunityAvenirHouseSearcher {
     @AuraEnabled(cacheable=true)
     public static List<Product2> searchHomeByName(String houseName){
         String nameFromSearcher = '%' + houseName + '%';
-        List<Product2> listOfProduct = [SELECT Id, Name, ProductCode, Description, IsActive, Family, DisplayUrl, Avenir__c FROM Product2 
-        WHERE (Name LIKE :nameFromSearcher OR Description LIKE :nameFromSearcher OR Family LIKE :nameFromSearcher OR ProductCode LIKE :nameFromSearcher) 
-        AND Avenir__c = true];
+        List<Product2> listOfProduct = [SELECT Id, Name, ProductCode, Description, IsActive, Family, DisplayUrl, Avenir__c, Country__c, City__c FROM Product2 
+        WHERE (Name LIKE :nameFromSearcher OR Description LIKE :nameFromSearcher OR Family LIKE :nameFromSearcher OR ProductCode 
+        LIKE :nameFromSearcher OR Country__c LIKE :nameFromSearcher) AND Avenir__c = true];
         return listOfProduct;
     }
 
@@ -42,7 +42,7 @@ public with sharing class ComunityAvenirHouseSearcher {
 
     @AuraEnabled(cacheable=true)
     public static List<Product2> getProductById(String productId){
-        List<Product2> listOfProduct = [SELECT Id, Name, ProductCode, Description, IsActive, Family, DisplayUrl, Avenir__c FROM Product2 
+        List<Product2> listOfProduct = [SELECT Id, Name, ProductCode, Description, IsActive, Family, DisplayUrl, Avenir__c, Country__c, City__c, Street__c FROM Product2 
         WHERE Id = :productId ];
         return listOfProduct;
     }

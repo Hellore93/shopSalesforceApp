@@ -7,11 +7,14 @@
             <div class="houseDetailWrapper">
                 <div class="houseInformation">
                     <div><b>House type: </b> {houseObject.product.Family}</div>
-                    <h1><b>Description: </b>{houseObject.product.Description}</h1>
+                    <div><b>Country: </b>{houseObject.product.Country__c}</div>
+                    <div><b>City: </b>{houseObject.product.City__c}</div>
+                    <div><b>Street: </b>{houseObject.product.Street__c}</div>
+                    <div><b>Description: </b>{houseObject.product.Description}</div>
                     <div><b>Price: </b>{houseObject.productStandardPrice.UnitPrice} €</div>
                     <div if:true={discountPrice}><b>Actual Price: </b>{discountPrice} €</div>
                 </div>        
-                <img class="housePhoto" src={imgUrl}/>
+                <img class="housePhoto" src={imgUrl}/>                
             </div>
         </div>
         <div class="photoGallery" if:true={photoGallery}>
@@ -21,6 +24,10 @@
                 <c-avenir-house-details-photo-gallery key={photo.id} photo-item={photo} photo-list={objectToSend}></c-avenir-house-details-photo-gallery>
             </template>
 </div>
+</div>
+<div class="locatlizationSection">
+    <h2 class="sectionName">House details</h2>
+    <lightning-map class="houseMap" map-markers={mapMarkers}> </lightning-map>
 </div>
 </div>
 </template>
