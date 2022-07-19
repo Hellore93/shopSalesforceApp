@@ -1,20 +1,4 @@
 <template>
-    <!-- <button onclick={test} >Test </button> -->
-    <!-- <div class="singleHouse" onclick={showDetails}>
-        <img class="photo" src={imgUrl}/>
-        <div class="houseDescription">
-            <div class="houseName header">{result.Name}</div>
-            <div class="houseName">Type: {result.Family}</div>
-            <div class="houseName">Localization: {result.Country__c}</div>
-            <div class="priceSection">
-                <div class={priceClass}>{price.productStandardPrice.UnitPrice} €</div>
-                <div if:true={discountPrice} class="priceText">{discountPrice} €</div>
-            </div>        
-        </div>
-        <span class="goToDetails">
-            <span class="txt">Show details</span>
-        </span>    
-    </div> -->
 
     <div class="container page-wrapper" onclick={showDetails}>
         <div class="page-inner">
@@ -47,9 +31,7 @@
                 </div>
       
                 <a class="cart" href="#">
-                    <span class="price">{result.Name}</span>
-                  <!-- <span class="price">{price.productStandardPrice.UnitPrice}</span>
-                  <span class="price">{discountPrice}</span> -->
+                    <span class="price">{result.Country__c}, {result.City__c}</span>
                   <span class="add-to-cart">
                     <span class="txt">Go to details</span>
                   </span>
