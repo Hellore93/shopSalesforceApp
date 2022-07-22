@@ -21,3 +21,32 @@
     width: 250px;
     height: 250px;
 }
+
+.typeSearchSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.typeSearchSection img {
+    margin: 0 25px;
+    width: 50px;
+}
+
+.typeSearchSection p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.typeSearchSection div {
+    cursor: pointer;
+}
+
+.active {
+    color: red;
+}
+
+.inactive {
+    /* color: red; */
+}

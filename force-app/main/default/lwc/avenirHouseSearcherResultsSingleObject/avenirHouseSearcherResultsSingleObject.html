@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container page-wrapper" onclick={showDetails}>
+    <div class="container page-wrapper" >
         <div class="page-inner">
           <div class="row">
             <div class="el-wrapper">
@@ -30,7 +30,7 @@
                   <div class="h-bg-inner"></div>
                 </div>
       
-                <a class="cart" href="#">
+                <a class="cart" href="#" onclick={showDetails}>
                     <span class="price">{result.Country__c}, {result.City__c}</span>
                   <span class="add-to-cart">
                     <span class="txt">Go to details</span>

@@ -9,6 +9,8 @@ trigger CreateContentDocumentLink on ContentDocumentLink  (after insert) {
     System.debug(contDocLink);
         
     for(ContentDocumentLink content: contDocLink){
+        System.debug(content.Id);
+        // content.ContentDocumentId = content.ContentDocumentId;
         content.ShareType = 'V';
         content.Visibility = 'AllUsers';
         contenDocLinkToUpdate.add(content);

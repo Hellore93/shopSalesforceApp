@@ -51,7 +51,7 @@ global class AutocreatedRegHandler1657700749895 implements Auth.RegistrationHand
           Id contactId = createPersonAccountContact(data);
           
           // You'd likely use other logic to assign the Profile
-          Profile p = [SELECT Id FROM profile WHERE name='Customer Community User'];
+          Profile p = [SELECT Id FROM profile WHERE name='Customer Community User2'];
   
           // Keeping it modular, we initialize the user in another method
           User u = createUser(data,p);

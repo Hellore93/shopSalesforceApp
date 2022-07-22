@@ -1,8 +1,32 @@
-<template>
-    
-    <!-- <h1 class="hederParagraph">Our house</h1> -->
+<template>    
+    <div class="typeSearchSection">
+        <div id="House" class="iconWrapper" onclick={house}>
+            <img src={House} />
+            <p class='cls HouseP'>House</p>
+        </div>
 
-    <div class="iterator">
+        <div id="Penthouse" class="iconWrapper" onclick={house}>
+            <img src={Penthouse} />
+            <p class='cls PenthouseP'>Penthouse</p>
+        </div>
+
+        <div id="Island" class="iconWrapper" onclick={house}>
+            <img src={Island} />
+            <p class='cls IslandP'>Island</p>
+        </div>
+
+        <div id="Apartament" class="iconWrapper" onclick={house}>
+            <img src={Apartament} />
+            <p class='cls ApartamentP'>Apartament</p>
+        </div>
+
+        <div id="Mountain" class="iconWrapper" onclick={house}>
+            <img src={Mountain} />
+            <p class='cls MountainP'>Mountain</p>
+        </div>
+</div>
+
+    <div class="iterator">        
     <template if:true={results} for:each={results} for:item="house" for:index="index">
         <c-avenir-house-searcher-results-single-object key={house.id} single-house-object={house} ></c-avenir-house-searcher-results-single-object>
     </template>

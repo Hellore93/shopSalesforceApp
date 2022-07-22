@@ -1,0 +1,16 @@
+import { LightningElement } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
+
+export default class AvenirHouseShoppingCartIcon extends NavigationMixin(LightningElement) {
+
+    goToCart() {
+        console.log('test');
+        const config = {
+            type: 'standard__webPage',
+            attributes: {
+                url: '/shopping-cart/'
+            }
+        };
+        this[NavigationMixin.Navigate](config);
+    }
+}

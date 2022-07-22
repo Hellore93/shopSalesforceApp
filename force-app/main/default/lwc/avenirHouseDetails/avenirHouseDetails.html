@@ -3,7 +3,9 @@
     <div if:true={clickedObjectDeails}>
         <div class="detailSection">
             <h1 class="houseHeader">{houseObject.product.Name}</h1>
-            <h2 class="sectionName">House details</h2>
+            <h2 class="sectionName">House details
+            <lightning-icon class="addToCart" icon-name="standard:buyer_account" alternative-text="Rent this flat" onclick={saveToCart}></lightning-icon>
+        </h2>
             <div class="houseDetailWrapper">
                 <div class="houseInformation">
                     <div><b>House type: </b> {houseObject.product.Family}</div>
@@ -25,9 +27,14 @@
             </template>
 </div>
 </div>
-<div class="locatlizationSection">
-    <h2 class="sectionName">House details</h2>
-    <lightning-map class="houseMap" map-markers={mapMarkers}> </lightning-map>
+<h2 class="sectionName">Rent me</h2>
+<div class="rentSection">
+    <c-avenir-house-details-rent clicked-object={houseObject}></c-avenir-house-details-rent>
+    <div class="locatlizationSection">
+        <h1>House localization</h1>
+        <lightning-map class="houseMap" map-markers={mapMarkers} zoom-level={zoomLevel}> </lightning-map>
+    </div>
 </div>
+
 </div>
 </template>

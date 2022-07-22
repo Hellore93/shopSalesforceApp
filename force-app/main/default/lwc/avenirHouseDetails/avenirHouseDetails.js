@@ -2,6 +2,9 @@ import { LightningElement, wire, api } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import getProductPhotoGallery from '@salesforce/apex/ComunityAvenirHouseSearcher.getProductPhotoGallery';
 import getProductDescription from '@salesforce/apex/ComunityAvenirHouseSearcher.getProductDescription';
+import addToCache from '@salesforce/apex/ComunityAvenirHouseCache.addToCache';
+import pubsub from 'c/pubsub';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 const IMGURL = '/sfc/servlet.shepherd/version/download/';
 
@@ -13,13 +16,13 @@ export default class AvenirHouseDetails extends LightningElement {
     photoGallery;
     objectToSend;
     mapMarkers;
+    zoomLevel = 15;
 
     connectedCallback() {
         let prodId = this.pageRef.attributes.recordId;
         getProductDescription({ houseId: prodId }).then(
             (result) => { this.clickedObjectDeails = result[0] }
         ).catch((error) => { console.log(error); });
-        console.log(JSON.stringify(this.clickedObjectDeails));
         this.photoGalleryFunction();
     }
 
@@ -35,12 +38,32 @@ export default class AvenirHouseDetails extends LightningElement {
                         City: this.clickedObjectDeails.product.City__c,
                         Country: this.clickedObjectDeails.product.Country__c,
                     },
-                    title: 'The Landmark Building',
-                    description: 'Historic <b>11-story</b> building completed in <i>1916</i>',
+                    title: '',
+                    description: '',
                 }, ];
+
             }
         ).catch((error) => { console.log(error); });
     };
+
+    saveToCart() {
+        addToCache({
+            product: this.clickedObjectDeails.product,
+            standardPrice: this.clickedObjectDeails.productStandardPrice,
+            discountPrice: this.clickedObjectDeails.productDiscountPrice
+        }).then(
+            (result) => {
+                pubsub.fireEvent(this.pageRef, 'cacheObject', result)
+            }
+        ).finally(() => {
+            this.dispatchEvent(new ShowToastEvent({
+                title: 'Success',
+                message: 'Adding to cart success',
+                variant: 'success',
+                mode: 'dismissable'
+            }));
+        }).catch((error) => { console.log(error); });
+    }
 
     get houseObject() {
         if (this.clickedObjectDeails) {
@@ -56,6 +79,7 @@ export default class AvenirHouseDetails extends LightningElement {
 
     get imgUrl() {
         if (this.clickedObjectDeails) {
+            console.log(this.clickedObjectDeails);
             const id = this.houseObject.product.DisplayUrl;
             return IMGURL + id.slice(id.length - 18);
         }

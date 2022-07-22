@@ -1,6 +1,14 @@
-public with sharing class ComunityAvenirHouseSearcher {
-    public ComunityAvenirHouseSearcher() {
+public without sharing class ComunityAvenirHouseSearcher extends ProductWithPriceWrapper{
 
+    @AuraEnabled
+        public static List<String> getProductFamily() {
+        List<String> options = new List<String>();
+        Schema.DescribeFieldResult fieldResult = Product2.Family.getDescribe();
+        List<Schema.PicklistEntry> pList = fieldResult.getPicklistValues();
+        for (Schema.PicklistEntry p : pList) {
+            options.add(p.getLabel());
+        }
+        return options;
     }
 
     @AuraEnabled(cacheable=true)
@@ -32,11 +40,9 @@ public with sharing class ComunityAvenirHouseSearcher {
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<ContentVersion> getProductPhotoGallery(String productId){
-        List<ContentVersion> productPhoto = 
-        [SELECT FirstPublishLocationId, FileType, ContentBodyId, Title, 	
-        ContentDocumentId FROM ContentVersion WHERE FirstPublishLocationId = :productId LIMIT 100];
-        System.debug(productPhoto);
+    public static List<ContentDocumentLink> getProductPhotoGallery(String productId){
+        
+        List<ContentDocumentLink> productPhoto  = [SELECT Id, ContentDocumentId, LinkedEntityId FROM ContentDocumentLink WHERE LinkedEntityId = :productId];
         return productPhoto;
     }
 
@@ -72,7 +78,6 @@ public with sharing class ComunityAvenirHouseSearcher {
 
     @AuraEnabled(cacheable=true)
     public static List<productWithPriceWrapper> getProductDescription(String houseId){
-        System.debug(houseId);
         
         List<Product2> productDetail = getProductById(houseId);
         Map<String, PricebookEntry> mapOfPrice = getStandardPriceList();
@@ -92,21 +97,5 @@ public with sharing class ComunityAvenirHouseSearcher {
         } 
 
         return listProductWithPrice;
-    }
-
-    public class productWithPriceWrapper{
-        @AuraEnabled
-        public Product2 product;
-        @AuraEnabled
-        public PricebookEntry productStandardPrice;
-        @AuraEnabled
-        public  List<PricebookEntry> productDiscountPrice;
-
-        public productWithPriceWrapper(Product2 item, PricebookEntry standardPrice,  List<PricebookEntry> discountPrice ){
-            this.product = item;
-            this.productStandardPrice = standardPrice;
-            this.productDiscountPrice = discountPrice;
-        }
-
     }
 }

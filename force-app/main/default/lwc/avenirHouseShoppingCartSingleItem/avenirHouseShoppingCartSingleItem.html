@@ -1,0 +1,25 @@
+<template>
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+      <td class="name">
+        <div>{singleProduct.Name}</div>
+      </td>
+      <td class="localization">
+        <div>{singleProduct.Country__c}</div>
+      </td>
+      <td class="localization"> 
+        <div>{singleProduct.City__c}</div>
+      </td>
+      <td class="price">
+        <div>{price} €</div>
+      </td>
+      <td class="price">
+        <div>{costRent} €</div>
+      </td>
+      <td class="action font">
+        <lightning-button-icon icon-name="action:delete" alternative-text="Delete" title="Delete" onclick={deleteFromCache}></lightning-button-icon>
+        <lightning-button-icon icon-name="action:approval" alternative-text="Approved" title="Approved"></lightning-button-icon>
+      </td>
+    </table>
+
+</template>

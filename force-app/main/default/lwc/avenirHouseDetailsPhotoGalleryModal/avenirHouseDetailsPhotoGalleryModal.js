@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-const IMGURL = '/sfc/servlet.shepherd/version/download/';
+const IMGURL = '/sfc/servlet.shepherd/document/download/';
 
 export default class AvenirHouseDetailsPhotoGalleryModal extends LightningElement {
     @api currentPhoto;
@@ -43,7 +43,7 @@ export default class AvenirHouseDetailsPhotoGalleryModal extends LightningElemen
 
     get imgUrl() {
         if (this.currentPhoto) {
-            return IMGURL + this.currentPhoto.Id;
+            return IMGURL + this.currentPhoto.ContentDocumentId;
         }
         return null;
     }

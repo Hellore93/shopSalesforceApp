@@ -1,0 +1,27 @@
+table div {
+    text-align: center;
+}
+
+.name {
+    width: 24vw;
+}
+
+.localization {
+    width: 14vw;
+}
+
+.price {
+    width: 14vw;
+}
+
+.action {
+    width: 13vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.action lightning-button-icon {
+    margin: 0 5px;
+    cursor: pointer;
+}
