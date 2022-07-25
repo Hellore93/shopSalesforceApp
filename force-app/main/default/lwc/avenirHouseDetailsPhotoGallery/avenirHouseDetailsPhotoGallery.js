@@ -12,17 +12,12 @@ export default class AvenirHouseDetailsPhotoGallery extends LightningElement {
     }
 
     test() {
-        // this.photoList.forEach(element => {
-        //     const obj = this.photoList.find(this.photoList => element.Id == this.photoList.Id)
-        // })
         const obj = this.photoList.find(element => this.photoItem.Id == element.Id)
-        console.log(obj);
 
     }
 
     get imgUrl() {
         if (this.photoItem) {
-            console.log(JSON.parse(JSON.stringify(this.photoItem)));
             return IMGURL + this.photoItem.ContentDocumentId;
         }
         return null;

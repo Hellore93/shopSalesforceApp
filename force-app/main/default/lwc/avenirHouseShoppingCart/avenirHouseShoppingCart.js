@@ -10,6 +10,7 @@ export default class AvenirHouseShoppingCart extends LightningElement {
     wiredActivities;
     startDate;
     endDate;
+    totalPrice = 0;
 
     @wire(getCache)
     wiredResult(result) {
@@ -31,19 +32,9 @@ export default class AvenirHouseShoppingCart extends LightningElement {
         }
     }
 
-
     connectedCallback() {
-        console.log('callback');
+        this.getTotalPrice;
         refreshApex(this.wiredActivities);
-    }
-
-
-    getStartDate(event) {
-        this.startDate = new Date(event.target.value);
-    }
-
-    getEndDate(event) {
-        this.endDate = new Date(event.target.value);
     }
 
     passToParent(event) {
@@ -58,6 +49,16 @@ export default class AvenirHouseShoppingCart extends LightningElement {
             }).finally(
             () => { refreshApex(this.wiredActivities) }
         ).catch((error) => { console.log(error); });
+    }
+
+    changePrice(event) {
+        this.getTotalPrice();
+    }
+
+    getTotalPrice() {
+        let newArray = [];
+        const priceArray = this.template.querySelectorAll('c-avenir-house-shopping-cart-single-item').forEach(element => newArray.push(element.getPrice()));
+        this.totalPrice = newArray.reduce((a, b) => a + b, 0);
     }
 
 }

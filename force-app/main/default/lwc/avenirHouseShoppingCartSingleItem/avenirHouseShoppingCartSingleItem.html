@@ -10,11 +10,17 @@
       <td class="localization"> 
         <div>{singleProduct.City__c}</div>
       </td>
+      <td class="rentDate">
+        <lightning-input class="startDate" type="date" name="Start Date" label="Start date" onchange={getStartDate}></lightning-input>
+      </td>
+      <td class="rentDate"> 
+        <lightning-input class="endDate" type="date" name="input1" label="End date" onchange={getEndDate}></lightning-input>
+      </td>
       <td class="price">
         <div>{price} €</div>
       </td>
       <td class="price">
-        <div>{costRent} €</div>
+        <div class="priceToSum">{costRent} €</div>
       </td>
       <td class="action font">
         <lightning-button-icon icon-name="action:delete" alternative-text="Delete" title="Delete" onclick={deleteFromCache}></lightning-button-icon>

@@ -3,26 +3,51 @@
     flex-direction: column;
 }
 
-.tableHeader {
+.header {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.header .sumPrice {
+    position: absolute;
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 4px 20px;
+    float: left;
+    width: 250px;
+    right: 50px;
+}
+
+table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .name {
-    width: 24vw;
+    width: 22vw;
 }
 
 .localization {
-    width: 14vw;
+    width: 8vw;
+}
+
+.rentDate {
+    width: 10vw;
 }
 
 .price {
-    width: 14vw;
+    width: 10vw;
 }
 
 .action {
-    width: 13vw;
+    width: 8vw;
 }
 
 .dateInput {

@@ -98,4 +98,29 @@ public without sharing class ComunityAvenirHouseSearcher extends ProductWithPric
 
         return listProductWithPrice;
     }
+
+    @AuraEnabled
+    public static Avenir_Commentary__c saveNewCommentary(String commentId, String comment, Decimal rating, String productId){
+        
+        Avenir_Commentary__c newObject = 
+        commentId == ''? new Avenir_Commentary__c() : 
+        new Avenir_Commentary__c(
+            Id = commentId
+        );
+      
+        newObject.Commentary__c = comment;
+        newObject.rating__c = rating;
+        newObject.Product__c = productId;
+        
+        upsert newObject;
+        return newObject;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Avenir_Commentary__c> getCommentList(String productId){
+        List<Avenir_Commentary__C> productComment = [SELECT Id, OwnerId, Name, CreatedById, LastModifiedDate, Product__c, CreatedBy.Name, Commentary__c, rating__c 
+        FROM Avenir_Commentary__c Where Product__c = :productId];
+        return productComment;
+    }
+
 }

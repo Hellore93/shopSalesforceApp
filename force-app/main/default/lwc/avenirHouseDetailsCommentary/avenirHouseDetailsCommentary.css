@@ -16,3 +16,12 @@
 .saveCommentButton {
     margin: 5px auto;
 }
+
+.editSection {
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.editSection lightning-button {
+    margin: 0 10px;
+}

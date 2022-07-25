@@ -21,7 +21,7 @@ export default class AvenirHouseDetails extends LightningElement {
     connectedCallback() {
         let prodId = this.pageRef.attributes.recordId;
         getProductDescription({ houseId: prodId }).then(
-            (result) => { this.clickedObjectDeails = result[0] }
+            (result) => { this.clickedObjectDeails = result[0], console.log(result[0]); }
         ).catch((error) => { console.log(error); });
         this.photoGalleryFunction();
     }
