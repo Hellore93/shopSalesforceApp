@@ -9,29 +9,8 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
     quantityValue = 1;
     day = 1;
     costRent;
-    // listAfterDelete;
-
-    _startDate;
-    @api
-    get startDate() {
-        return this._startDate;
-    }
-
-    set startDate(value) {
-        this._startDate = value;
-        this.rentCost();
-    }
-
-    _endDate;
-    @api
-    get endDate() {
-        return this._endDate;
-    }
-
-    set endDate(value) {
-        this._endDate = value;
-        this.rentCost();
-    }
+    startDate;
+    endDate;
 
     connectedCallback() {
         if (this.singleCacheProduct.productDiscountPrice[0]) {
@@ -42,6 +21,17 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
             this.price = this.singleCacheProduct.productStandardPrice.UnitPrice;
         }
         this.costRent = this.price;
+        this.changePriceEvent();
+    }
+
+    getStartDate(event) {
+        this.startDate = new Date(event.target.value);
+        this.rentCost();
+    }
+
+    getEndDate(event) {
+        this.endDate = new Date(event.target.value);
+        this.rentCost();
     }
 
     deleteFromCache(event) {
@@ -52,10 +42,24 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
     }
 
     rentCost() {
-        if (this._startDate && this._endDate) {
-            this.day = 1 + (this._endDate - this._startDate) / (1000 * 3600 * 24);
+        if (this.startDate && this.endDate) {
+            this.day = 1 + (this.endDate - this.startDate) / (1000 * 3600 * 24);
             this.costRent = this.day * this.price;
+            this.changePriceEvent();
+
         }
+    }
+
+    @api
+    getPrice() {
+        return this.costRent;
+    }
+
+    changePriceEvent() {
+        const custEvent = new CustomEvent('changeprice', {
+            detail: 'test'
+        });
+        this.dispatchEvent(custEvent);
     }
 
     get singleProduct() {

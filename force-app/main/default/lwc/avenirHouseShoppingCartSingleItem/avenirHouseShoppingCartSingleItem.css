@@ -2,20 +2,30 @@ table div {
     text-align: center;
 }
 
+table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .name {
-    width: 24vw;
+    width: 22vw;
 }
 
 .localization {
-    width: 14vw;
+    width: 8vw;
+}
+
+.rentDate {
+    width: 10vw;
 }
 
 .price {
-    width: 14vw;
+    width: 10vw;
 }
 
 .action {
-    width: 13vw;
+    width: 8vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -24,4 +34,17 @@ table div {
 .action lightning-button-icon {
     margin: 0 5px;
     cursor: pointer;
+    height: 100%;
+}
+
+.rentDate lightning-input {
+    width: 80%;
+}
+
+.startDate {
+    margin: auto;
+}
+
+.endDate {
+    margin: auto;
 }
