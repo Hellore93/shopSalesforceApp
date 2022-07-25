@@ -41,7 +41,6 @@ export default class AvenirHouseDetails extends LightningElement {
                     title: '',
                     description: '',
                 }, ];
-
             }
         ).catch((error) => { console.log(error); });
     };

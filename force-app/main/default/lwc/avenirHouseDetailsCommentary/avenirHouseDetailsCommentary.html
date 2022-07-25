@@ -1,0 +1,9 @@
+<template>
+
+    <div class="addCommentSection">
+        <c-avenir-house-details-commentary-star onratingchange={onStarRatingClick}></c-avenir-house-details-commentary-star>
+        <lightning-textarea max-length="500" name="input1" label="Commentary field" ></lightning-textarea>
+        <lightning-button class="saveCommentButton" label="save" onclick={saveComment} ></lightning-button>    
+    </div>
+
+</template>
