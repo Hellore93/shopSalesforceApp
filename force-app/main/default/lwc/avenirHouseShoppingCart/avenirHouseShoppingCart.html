@@ -3,7 +3,6 @@
     <div class="wrapper" if:true={cacheItem}>
       <div class="header">
         <h1>House Stock</h1>
-        <div class="sumPrice">Total Price : {totalPrice}</div>
         </div>
         <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
                 <td class="name font">
@@ -37,7 +36,13 @@
             <c-avenir-house-shopping-cart-single-item key={item.id} oncallpasstoparent={passToParent} onchangeprice={changePrice} single-cache-product={item} ></c-avenir-house-shopping-cart-single-item>
         </template>
 </div>
+<div class="footer">
+    <div class="sumPrice">Total Price : {totalPrice} €</div>
+    <div class="rentButton" onclick={rentAll}>Rent all</div>
 </div>
+</div>
+
+
 
 <div class="emptySection" if:false={cacheItem}>
     <p class="emptyCart">Your shoping cart is empty.</p>

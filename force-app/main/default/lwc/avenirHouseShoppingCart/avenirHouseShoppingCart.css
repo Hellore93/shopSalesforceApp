@@ -10,18 +10,30 @@
     margin-bottom: 25px;
 }
 
-.header .sumPrice {
-    position: absolute;
-    display: inline-block;
+.footer {
+    display: flex;
+    margin-top: 10px;
+    position: relative;
+    left: 68vw;
+}
+
+.sumPrice {
     background-color: #333;
     color: #fff;
     font-size: 20px;
-    font-weight: normal;
     text-transform: uppercase;
     padding: 4px 20px;
-    float: left;
     width: 250px;
-    right: 50px;
+}
+
+.rentButton {
+    background-color: #333;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 4px 20px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 table {

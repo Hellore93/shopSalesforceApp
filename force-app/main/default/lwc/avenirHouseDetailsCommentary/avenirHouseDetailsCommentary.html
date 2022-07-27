@@ -6,8 +6,8 @@
     <lightning-button if:false={userComment} class="saveCommentButton" label="save" onclick={saveComment}></lightning-button>
 
     <div class="editSection" if:true={userComment}>
-        <lightning-button class="saveCommentButton" label="edit" onclick={saveComment}></lightning-button>
-        <lightning-button class="saveCommentButton" label="delete" onclick={getDeleteEvent}></lightning-button>
+        <lightning-button class="saveCommentButton" label="Edit" onclick={saveComment}></lightning-button>
+        <lightning-button class="saveCommentButton" label="Delete" onclick={getDeleteEvent}></lightning-button>
     </div>
 </div>
 

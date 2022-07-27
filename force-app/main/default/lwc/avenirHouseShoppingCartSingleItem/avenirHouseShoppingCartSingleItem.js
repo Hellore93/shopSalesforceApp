@@ -20,17 +20,20 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
         } else {
             this.price = this.singleCacheProduct.productStandardPrice.UnitPrice;
         }
+        const day = new Date();
+        this.startDate = day.toISOString();
+        this.endDate = day.toISOString();
         this.costRent = this.price;
         this.changePriceEvent();
     }
 
     getStartDate(event) {
-        this.startDate = new Date(event.target.value);
+        this.startDate = new Date(event.target.value).toISOString();
         this.rentCost();
     }
 
     getEndDate(event) {
-        this.endDate = new Date(event.target.value);
+        this.endDate = new Date(event.target.value).toISOString();
         this.rentCost();
     }
 
@@ -43,7 +46,7 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
 
     rentCost() {
         if (this.startDate && this.endDate) {
-            this.day = 1 + (this.endDate - this.startDate) / (1000 * 3600 * 24);
+            this.day = Math.round(1 + (new Date(this.endDate) - new Date(this.startDate)) / (1000 * 3600 * 24));
             this.costRent = this.day * this.price;
             this.changePriceEvent();
 
@@ -53,6 +56,17 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
     @api
     getPrice() {
         return this.costRent;
+    }
+
+    @api
+    getObject() {
+        const orderListObj = {
+            startDate: new Date(this.startDate).toDateString(),
+            endDate: new Date(this.endDate).toDateString(),
+            cost: this.costRent,
+            prod: this.singleCacheProduct
+        }
+        return orderListObj;
     }
 
     changePriceEvent() {

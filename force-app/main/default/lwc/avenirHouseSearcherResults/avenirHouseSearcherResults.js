@@ -15,6 +15,7 @@ export default class AvenirHouseSearcherResults extends LightningElement {
     Penthouse;
     Island;
 
+
     House = Salesforce_Images + '/Domes.jpg';
     Penthouse = Salesforce_Images + '/HistoricalHomes.jpg';
     Island = Salesforce_Images + '/islnd.jpg';
@@ -30,7 +31,6 @@ export default class AvenirHouseSearcherResults extends LightningElement {
         if (data) {
             this.houseList = data;
             this.firstHouseList = data;
-            console.log(data);
         } else if (error) {
             console.log('Something went wrong:', error);
         }
