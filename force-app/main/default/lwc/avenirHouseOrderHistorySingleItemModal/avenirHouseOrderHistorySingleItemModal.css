@@ -1,0 +1,18 @@
+.wrapper {
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.singleItem {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    width: 200px;
+}
+
+.item {
+    word-break: break-word;
+    width: 200px;
+}

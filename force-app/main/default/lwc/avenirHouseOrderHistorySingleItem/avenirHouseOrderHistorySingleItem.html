@@ -1,0 +1,10 @@
+<template>
+    <div class="horizontal-list">
+        <p>Order Number: {singleOrder.OrderNumber}</p>
+        <p>Created time: {createTime}</p>
+        <p>Total cost: {singleOrder.TotalAmount} €</p>
+        <lightning-button label={label} variant="brand" onclick={showMore}></lightning-button>
+    </div>
+        <c-avenir-house-order-history-single-item-modal if:true={showModal} order-id={orderId}></c-avenir-house-order-history-single-item-modal>
+    
+</template>

@@ -1,0 +1,13 @@
+.horizontal-list {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+.horizontal-list p {
+    /* display: inline; */
+    width: 200px;
+    margin: 5px 20px;
+}

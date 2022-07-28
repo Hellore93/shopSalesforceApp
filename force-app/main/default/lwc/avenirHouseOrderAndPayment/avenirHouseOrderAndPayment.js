@@ -2,6 +2,7 @@ import { LightningElement, track, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import Salesforce_Images from '@salesforce/resourceUrl/visaIcon';
 import createOrder from '@salesforce/apex/ComunityAvenirHouseOrder.createOrder';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class AvenirHouseOrderAndPayment extends LightningElement {
 
@@ -40,7 +41,12 @@ export default class AvenirHouseOrderAndPayment extends LightningElement {
         console.log(objToSend);
         createOrder({ 'orderObject': objToSend }).then(
             (result) => {
-                console.log(result)
+                this.dispatchEvent(new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Your rent proccess over with success',
+                    variant: 'success',
+                    mode: 'dismissable'
+                }));
             }).catch((error) => { console.log(error); })
     }
 

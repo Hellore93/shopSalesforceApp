@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.emptyList {
+    text-align: center;
+    font-size: xxx-large;
+    margin: 10vh;
+}

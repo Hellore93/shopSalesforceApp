@@ -8,6 +8,26 @@ public with sharing class ComunityAvenirHouseOrder extends ProductWithPriceWrapp
         return accountItem;
     }
 
+    @AuraEnabled(cacheable=true)
+    public static List<OrderItem> orderItemList(String OrderId){
+        System.debug(OrderId);
+        List<OrderItem> itemList = [SELECT IsDeleted, UnitPrice, TotalPrice, ListPrice, 
+        ServiceDate, EndDate, SystemModstamp, LastModifiedDate, CreatedDate, Id, Product2Id, 
+        PricebookEntryId, OrderId, LastModifiedById, CreatedById, OrderItemNumber, Description, 
+        Product2.Name, Product2.Country__c, Product2.DisplayUrl FROM OrderItem where OrderId =:OrderId];
+        return itemList;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Order> getOrder(String userId){
+        List<Order> itemList = [SELECT Id, OwnerId, ContractId, AccountId, Pricebook2Id, 
+        EffectiveDate, EndDate, IsReductionOrder, Status, Description,StatusCode, OrderNumber, 
+        TotalAmount, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, IsDeleted,
+        SystemModstamp, LastViewedDate, LastReferencedDate FROM Order where OwnerId =:userId
+        ORDER BY OrderNumber ASC];
+        return itemList;
+    }
+
     @AuraEnabled
     public static Order createOrder(List<OrderWrapper> orderObject){
 
@@ -44,6 +64,8 @@ public with sharing class ComunityAvenirHouseOrder extends ProductWithPriceWrapp
             orderItem.Quantity = 1;
             orderItem.UnitPrice = item.cost;
             orderItem.PricebookEntryId = item.prod.productStandardPrice.Id;
+            orderItem.ServiceDate = item.startDate;
+            orderItem.endDate = item.endDate;
 
             orderItems.add(orderItem);
         }
