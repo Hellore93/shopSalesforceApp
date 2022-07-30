@@ -38,8 +38,7 @@
     <div class="subtotal">Subtotal: {totalPrice} €</div>
 
     <div class="payment">
-        <img src={visaIcon} class="visaIcon" />
-
+        <span class="personalTabel">Personal Data</span>
         <div class="payDate">
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
             <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
@@ -48,21 +47,28 @@
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
             <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+            <input type="text" id="city" name="city" placeholder="New York" style="margin-bottom: 15px;">
+        </div>
+    </div>
 
+    <div class="payment">
+        <img src={visaIcon} class="visaIcon" />
+
+        <div class="payDate">
             <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <lightning-input variant="label-hidden" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required></lightning-input>
             <label for="expmonth">Exp Month</label>
-            <input class="expmonth" type="text" id="expmonth" name="expmonth" placeholder="September">
-
+            <lightning-input variant="label-hidden" class="expmonth" type="text" id="expmonth" name="expmonth" placeholder="September" required></lightning-input>
+            <label for="expmonth">Holder Name</label>
+            <lightning-input variant="label-hidden" placeholder="John Doe" required></lightning-input>
         </div>
 
         <div class="cvvClass">
             <label for="cvv">CVV</label>
-            <input type="text" id="cvv" name="cvv" placeholder="352">
+            <lightning-input onchange={disableButton} variant="label-hidden" type="text" id="cvv" name="cvv" placeholder="352" required></lightning-input>
         </div>
 
-        <lightning-button variant="success" label="Rent" title="Successful action" onclick={rent} class="slds-m-left_x-small "></lightning-button>
+        <lightning-button disabled={buttonDisable} variant="success" label="Rent" title="Successful action" onclick={rent} class="slds-m-left_x-small "></lightning-button>
 
     </div>
 

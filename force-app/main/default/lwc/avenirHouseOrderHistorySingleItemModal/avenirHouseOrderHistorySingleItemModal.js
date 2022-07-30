@@ -17,10 +17,8 @@ export default class AvenirHouseOrderHistorySingleItemModal extends LightningEle
     }
 
     connectedCallback() {
-        console.log('orderId ' + this.orderId);
         orderItemList({ OrderId: this.orderId })
             .then((result) => {
-                console.log(result);
                 this.orderItems = result;
             })
             .catch(error => {

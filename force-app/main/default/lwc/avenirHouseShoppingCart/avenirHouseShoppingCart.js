@@ -48,7 +48,12 @@ export default class AvenirHouseShoppingCart extends NavigationMixin(LightningEl
                     mode: 'dismissable'
                 }));
             }).finally(
-            () => { refreshApex(this.wiredActivities) }
+            () => {
+                refreshApex(this.wiredActivities),
+                    setTimeout(() => {
+                        this.changePrice(event);
+                    }, "500")
+            }
         ).catch((error) => { console.log(error); });
     }
 

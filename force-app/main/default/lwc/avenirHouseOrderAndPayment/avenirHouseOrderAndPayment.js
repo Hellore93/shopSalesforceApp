@@ -3,14 +3,16 @@ import { CurrentPageReference } from 'lightning/navigation';
 import Salesforce_Images from '@salesforce/resourceUrl/visaIcon';
 import createOrder from '@salesforce/apex/ComunityAvenirHouseOrder.createOrder';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class AvenirHouseOrderAndPayment extends LightningElement {
+export default class AvenirHouseOrderAndPayment extends NavigationMixin(LightningElement) {
 
     @track currentUserName;
     visaIcon = Salesforce_Images;
     @wire(CurrentPageReference) pageRef;
     @track orderList;
     totalPrice;
+    buttonDisable = true;
 
     connectedCallback() {
         if (sessionStorage.getItem('orderItem')) {
@@ -26,10 +28,13 @@ export default class AvenirHouseOrderAndPayment extends LightningElement {
         this.totalPrice = newArray.reduce((a, b) => a + b, 0);
     }
 
+    disableButton(event) {
+        this.buttonDisable = false;
+    }
+
     rent() {
         let objToSend = [];
         let newObj = {};
-        console.log(this.orderList);
         this.orderList.forEach(function(element) {
             newObj.startDate = new Date(element.startDate);
             newObj.endDate = new Date(element.endDate);
@@ -38,7 +43,6 @@ export default class AvenirHouseOrderAndPayment extends LightningElement {
             objToSend.push(newObj);
             newObj = {};
         })
-        console.log(objToSend);
         createOrder({ 'orderObject': objToSend }).then(
             (result) => {
                 this.dispatchEvent(new ShowToastEvent({
@@ -47,6 +51,14 @@ export default class AvenirHouseOrderAndPayment extends LightningElement {
                     variant: 'success',
                     mode: 'dismissable'
                 }));
+                sessionStorage.setItem('orderId', result.Id);
+                const config = {
+                    type: 'standard__webPage',
+                    attributes: {
+                        url: '/order-history/'
+                    }
+                };
+                this[NavigationMixin.Navigate](config);
             }).catch((error) => { console.log(error); })
     }
 

@@ -1,6 +1,5 @@
 import { LightningElement, api } from 'lwc';
-import removeFromCache from '@salesforce/apex/ComunityAvenirHouseCache.removeFromCache';
-const IMGURL = '/sfc/servlet.shepherd/version/download/';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class AvenirHouseShoppingCartSingleItem extends LightningElement {
 
@@ -28,12 +27,36 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
     }
 
     getStartDate(event) {
-        this.startDate = new Date(event.target.value).toISOString();
+        if (new Date(event.target.value).toISOString() < this.startDate ||
+            new Date(event.target.value).toISOString() > this.endDate) {
+            this.startDate = new Date().toISOString();
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Start date before today or end date',
+                    variant: 'error',
+                })
+            );
+        } else {
+            this.startDate = new Date(event.target.value).toISOString();
+        }
         this.rentCost();
     }
 
     getEndDate(event) {
-        this.endDate = new Date(event.target.value).toISOString();
+        if (new Date(event.target.value).toISOString() < this.startDate) {
+            this.endDate = new Date().toISOString();
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'End date before start date',
+                    variant: 'error',
+                })
+            );
+        } else {
+            this.endDate = new Date(event.target.value).toISOString();
+        }
+
         this.rentCost();
     }
 
@@ -49,7 +72,6 @@ export default class AvenirHouseShoppingCartSingleItem extends LightningElement 
             this.day = Math.round(1 + (new Date(this.endDate) - new Date(this.startDate)) / (1000 * 3600 * 24));
             this.costRent = this.day * this.price;
             this.changePriceEvent();
-
         }
     }
 

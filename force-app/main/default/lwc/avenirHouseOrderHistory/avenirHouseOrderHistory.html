@@ -1,10 +1,11 @@
 <template>
     <lightning-card>
         <h1>My orders</h1>
+        <template if:true={orderList}>
         <template for:each={orderList} for:item="order">
-            <c-avenir-house-order-history-single-item key={order.id} single-order={order}></c-avenir-house-order-history-single-item>
+            <c-avenir-house-order-history-single-item new-order={newOrder} show-modal={order.boolNew} key={order.id} single-order={order} ></c-avenir-house-order-history-single-item>
         </template>
-
+</template>
 <p class="emptyList" if:true={emptyList}>You haven't orders yet!</p>
 </lightning-card>
 </template>

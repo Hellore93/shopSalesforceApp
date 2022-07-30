@@ -2,6 +2,8 @@ import { LightningElement, api, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from 'lightning/navigation';
+import orderItemListProduct from '@salesforce/apex/ComunityAvenirHouseOrder.orderItemListProduct';
+
 
 export default class AvenirHouseDetailsRent extends NavigationMixin(LightningElement) {
 
@@ -14,6 +16,7 @@ export default class AvenirHouseDetailsRent extends NavigationMixin(LightningEle
     costRent;
     price;
     orderList;
+    checkAvil;
 
 
     connectedCallback() {
@@ -31,7 +34,6 @@ export default class AvenirHouseDetailsRent extends NavigationMixin(LightningEle
     }
 
     decrement() {
-        console.log(JSON.parse(JSON.stringify(this.clickedObject)));
         const count = this.counter;
         this.counter = count - 1;
         if (this.counter < 1) {
@@ -48,19 +50,41 @@ export default class AvenirHouseDetailsRent extends NavigationMixin(LightningEle
     }
 
     getStartDate(event) {
-        this.startDate = new Date(event.target.value).toISOString();
+        if (new Date(event.target.value).toISOString() < this.startDate ||
+            new Date(event.target.value).toISOString() > this.endDate) {
+            this.startDate = new Date().toISOString();
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Start date before today or end date',
+                    variant: 'error',
+                })
+            );
+        } else {
+            this.startDate = new Date(event.target.value).toISOString();
+        }
         this.calculate();
     }
 
     getEndDate(event) {
-        this.endDate = new Date(event.target.value).toISOString();
+        if (new Date(event.target.value).toISOString() < this.startDate) {
+            this.endDate = new Date().toISOString();
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'End date before start date',
+                    variant: 'error',
+                })
+            );
+        } else {
+            this.endDate = new Date(event.target.value).toISOString();
+        }
         this.calculate();
     }
 
     calculate() {
         if (this.startDate && this.endDate) {
-            console.log(new Date(this.endDate) - new Date(this.startDate));
-            this.day = 1 + (new Date(this.endDate) - new Date(this.startDate)) / (1000 * 3600 * 24);
+            this.day = Math.round(1 + (new Date(this.endDate) - new Date(this.startDate)) / (1000 * 3600 * 24));
             this.costRent = this.day * this.price;
         }
     }
@@ -92,4 +116,46 @@ export default class AvenirHouseDetailsRent extends NavigationMixin(LightningEle
             }));
         }
     }
+
+    checkAvailable() {
+        orderItemListProduct({ ProductId: this.pageRef.attributes.recordId }).then(
+            (result) => {
+                this.checkAvil = result;
+                this.checkAvailableMethod();
+            }
+        ).catch((error) => { console.log(error); })
+
+    }
+
+    checkAvailableMethod() {
+        let startDate = new Date(this.startDate);
+        let endDate = new Date(this.endDate);
+        let overlapObject = []
+        this.checkAvil.forEach(element => {
+            if (
+                (startDate > new Date(element.ServiceDate) && startDate < new Date(element.EndDate)) ||
+                (endDate > new Date(element.ServiceDate) && endDate < new Date(element.EndDate)) ||
+                (startDate < new Date(element.ServiceDate) && endDate > new Date(element.EndDate))
+            ) {
+                overlapObject.push(element);
+            }
+
+        })
+        if (overlapObject.length > 0) {
+            this.dispatchEvent(new ShowToastEvent({
+                title: 'Field',
+                message: 'Date from: ' + startDate.toDateString() + ' to ' + endDate.toDateString() + ' is not available!',
+                variant: 'error',
+                mode: 'dismissable'
+            }));
+        } else {
+            this.dispatchEvent(new ShowToastEvent({
+                title: 'Success',
+                message: 'Your data is available!',
+                variant: 'success',
+                mode: 'dismissable'
+            }));
+        }
+    }
+
 }

@@ -10,7 +10,6 @@ public with sharing class ComunityAvenirHouseOrder extends ProductWithPriceWrapp
 
     @AuraEnabled(cacheable=true)
     public static List<OrderItem> orderItemList(String OrderId){
-        System.debug(OrderId);
         List<OrderItem> itemList = [SELECT IsDeleted, UnitPrice, TotalPrice, ListPrice, 
         ServiceDate, EndDate, SystemModstamp, LastModifiedDate, CreatedDate, Id, Product2Id, 
         PricebookEntryId, OrderId, LastModifiedById, CreatedById, OrderItemNumber, Description, 
@@ -19,13 +18,22 @@ public with sharing class ComunityAvenirHouseOrder extends ProductWithPriceWrapp
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<Order> getOrder(String userId){
+    public static List<OrderItem> orderItemListProduct(String ProductId){
+        List<OrderItem> itemList = [SELECT IsDeleted, UnitPrice, TotalPrice, ListPrice, 
+        ServiceDate, EndDate, SystemModstamp, LastModifiedDate, CreatedDate, Id, Product2Id, 
+        PricebookEntryId, OrderId, LastModifiedById, CreatedById, OrderItemNumber, Description, 
+        Product2.Name, Product2.Country__c, Product2.DisplayUrl FROM OrderItem where Product2Id =:ProductId];
+        return itemList;
+    }
+
+    @AuraEnabled
+    public static String getOrder(String userId){
         List<Order> itemList = [SELECT Id, OwnerId, ContractId, AccountId, Pricebook2Id, 
         EffectiveDate, EndDate, IsReductionOrder, Status, Description,StatusCode, OrderNumber, 
         TotalAmount, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, IsDeleted,
         SystemModstamp, LastViewedDate, LastReferencedDate FROM Order where OwnerId =:userId
         ORDER BY OrderNumber ASC];
-        return itemList;
+        return JSON.serialize(itemList);
     }
 
     @AuraEnabled

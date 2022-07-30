@@ -14,12 +14,13 @@ export default class AvenirHouseSearcherResults extends LightningElement {
     House;
     Penthouse;
     Island;
+    Apartment;
 
 
     House = Salesforce_Images + '/Domes.jpg';
     Penthouse = Salesforce_Images + '/HistoricalHomes.jpg';
     Island = Salesforce_Images + '/islnd.jpg';
-    Apartament = Salesforce_Images + '/Mansion.jpg';
+    Apartment = Salesforce_Images + '/Mansion.jpg';
     Mountain = Salesforce_Images + '/Mountan.jpg';
 
     connectedCallback() {
